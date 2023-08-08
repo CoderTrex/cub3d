@@ -63,6 +63,57 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
 	return (0);
 }
 
+int	find_map(char *full_file)
+{
+
+    char    **check;
+    int     number = 0;
+    int     i = -1;
+    check = ft_split(full_file, '\n');
+
+    // while (check[++i])
+    // {
+    //     printf("%s\n", check[i]);
+    // }
+
+    while (check[++i])
+    {
+        if (ft_strstr(check[i], "NO") || ft_strstr(check[i], "EA")
+            || ft_strstr(check[i], "SO") || ft_strstr(check[i], "WE")
+            || ft_strstr(check[i], "F ") || ft_strstr(check[i], "C "))
+            {
+                printf("check: %s\n", check[i]);
+                number++;
+            }
+        // else if (ft_strchr(check[i], '\n'))
+        //     continue;
+        if (number == 6 && ft_strchr(check[i], '1'))
+        {
+            // printf("MPosition: %s\n", check[i]);
+            // printf("MPosition: %d\n", i);
+            return i;
+        }
+    }
+    return (-1);
+}
+
+int	parsing_map(t_map *info, char *full_path)
+{
+	int		start_index;
+
+    (void)info;
+
+    // 0번부터 시작하는 인덱스이다.
+    // 만약 처음 시작이 1이라면 start_index에 1을 더해주도록한다.
+	start_index = find_map(full_path);
+    printf("\nstart index: %d\n", start_index);
+
+    if (start_index == -1)
+		return (error_msg("Invalid map area"));
+	
+	return (0);
+}
+
 int parsing_all(int fd, t_map *map_all)
 {
     int ret;
