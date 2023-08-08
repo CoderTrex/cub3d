@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../include/cub3d.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t destsize)
 {

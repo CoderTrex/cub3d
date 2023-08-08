@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../include/cub3d.h"
 
 static t_list	*ft_free_node(t_list *head, void *tmp, void (*del)(void *))
 {

@@ -1,1 +1,0 @@
-store xpm images

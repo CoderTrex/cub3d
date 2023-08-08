@@ -56,7 +56,7 @@ SRCS		=\
 			ft_lstnew.c\
 			ft_lstsize.c
 
-HDRS		= ../../include/libft.h
+HDRS		= ../include/libft.h
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
