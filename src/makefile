@@ -3,7 +3,8 @@ SRCS =  main.c\
 		parsing.c\
 		parsing_utils.c\
 		color.c\
-		utils.c
+		utils.c\
+		map.c
 
 OBJS = $(SRCS:.c=.o)
 COMPILER = cc

@@ -46,4 +46,7 @@ int	            check_rgb(char **split, t_color *color_s);
 int	            get_findex(char *str, char c);
 char	        *ft_strstr(const char *text, const char *pattern);
 
+int	            parsing_map(t_map *info, char *full_path);
+int	            find_map(char *full_file, t_map *info);
+
 #endif

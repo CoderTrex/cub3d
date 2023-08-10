@@ -36,8 +36,8 @@ typedef struct s_map
 	unsigned int floor_color;
 	unsigned int cell_color;
 	
-	double	px;
-	double	py;
+	unsigned int px;
+	unsigned int py;
 }	t_map;
 
 typedef struct s_color

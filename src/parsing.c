@@ -63,66 +63,6 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
 	return (0);
 }
 
-int	find_map(char *full_file, t_map *info)
-{
-
-    char    **check;
-    int     number = 0;
-    int     total  = -1;
-    int     i = -1;
-
-    check = ft_split(full_file, '\n');
-    // printf("test\n");
-    // printf("test\n");
-    while (check[++total]);
-        // printf("\n%s", check[total]);
-    // printf("test\n");
-    // printf("test\n");
-
-    while (check[++i])
-    {
-        // printf("check: %d, %s\n", i, check[i]);
-        if (ft_strstr(check[i], "NO") || ft_strstr(check[i], "EA")
-            || ft_strstr(check[i], "SO") || ft_strstr(check[i], "WE")
-            || ft_strstr(check[i], "F ") || ft_strstr(check[i], "C "))
-                number++;
-        if (number == 6 && ft_strchr(check[i], '1'))
-        {
-            // (void)info;
-            info->map = (char **)malloc(sizeof(char *) * total - 6);
-            printf("ddd: %d\n", total - 5);
-            int j = 0;
-            while (total > i)
-                info->map[j++] = ft_strdup(check[i++]);
-            info->map_len = j;
-            // j = 0;
-            // printf("TEST\n");
-            // while (j != 14)
-            //     printf("%s\n", info->map[j++]);
-            Free2DArray(check);
-            return i;
-        }
-    }
-    return (-1);
-}
-
-int	parsing_map(t_map *info, char *full_path)
-{
-	int		start_index;
-
-    (void)info;
-
-    // 0번부터 시작하는 인덱스이다.
-    // 만약 처음 시작이 1이라면 start_index에 1을 더해주도록한다.
-	start_index = find_map(full_path, info);
-    // printf("\nstart index: %d\n", start_index);
-
-    if (start_index == -1)
-		return (ft_error("Invalid map area"));
-	
-	return (0);
-}
-
 int parsing_all(int fd, t_map *map_all)
 {
     int ret;
@@ -184,10 +124,8 @@ int ft_parsing_master(char **argv, t_game *game_all)
 
     // 나중에 전부다 free하는 함수 만들어야겠다.
     free(game_all->map.full_path);
-    // int i = -1;
-    // while (game_all->map.map[++i] != NULL)
-    //     printf("%d, %s\n", i, game_all->map.map[i]);
     // Free2DArray(game_all->map.map);
+
 	int count = 0;
 	if (game_all->map.map)
 	{
