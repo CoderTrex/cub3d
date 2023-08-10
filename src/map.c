@@ -29,12 +29,14 @@ int	find_map(char *full_file, t_map *info)
             // (void)info;
             // printf("size: %d\n", size);
             info->map = (char **)malloc(sizeof(char *) * size);
+            info->map_cp = (char **)malloc(sizeof(char *) * size);
             int j = 0;
             while (size - 1 > j)
             {
                 // printf("i: %d j: %d ", i, j);
                 // printf("%s\n", check[i++]);
-                info->map[j] = ft_strdup(check[i++]);
+                info->map[j] = ft_strdup(check[i]);
+                info->map_cp[j] = ft_strdup(check[i++]);
                 // printf("%s\n", info->map[j]);
                 j++;
             }
@@ -74,7 +76,7 @@ int	check_spawn(t_map *map)
     }
     if (character == 1)
     {
-        printf("character position: %d, %d\n", map->px, map->py);
+        // printf("character position: %d, %d\n", map->px, map->py);
         return (0);
     }
     return (1);
@@ -127,11 +129,74 @@ int check_row2(char *str)
     return (0);
 }
 
+int check_four_forward(t_map *info, int y, int x)
+{
+    // printf("y: %d, x: %d, map[y][x]: %c\n", y, x, info->map_cp[y][x]);
+    // 마지막(인덱스의 범위가 0미만 혹은 width보다 큰 경우) 까지 간 경우 -> 1을 못찾아서 종료를 못함.
+    if (y < 0 || x < 0 || y == info->height || x == info->width)
+    {
+        printf("test: ERROR four forward %c\n", info->map_cp[y][x]);
+        return (1);
+    }
+    if (info->map_cp[y + 1][x] == ' ' || info->map_cp[y][x + 1] == ' '
+        || info->map_cp[y - 1][x] == ' ' || info->map_cp[y][x - 1] == ' '
+        || info->map_cp[y][x] == ' ')
+        // 아래로 내려갈 때 공간이 안막혀 있는 에러는 처리가 아직 안됨...
+        // || info->map_cp[y - 1][x] == 'N' || info->map_cp[y + 1][x] == 'N')
+    {
+        printf("test: ERROR four forward %c\n", info->map_cp[y][x]);
+        return (1);
+    }
+
+    if (y == 5 && x == 31)
+        printf("5, 31 : %c\n", info->map_cp[5][31]);
+
+    info->map_cp[y][x] = '1';
+    // printf("%c", info->map[y][x]);
+    // 만약 다음것이 0이라면 재귀로 반복
+    if (info->map_cp[y - 1][x] == '0')
+        return (check_four_forward(info, y - 1, x));
+    if (info->map_cp[y + 1][x] == '0')
+        return (check_four_forward(info, y + 1, x));
+    if (info->map_cp[y][x + 1] == '0')
+        return (check_four_forward(info, y, x + 1));
+    if (info->map_cp[y][x - 1] == '0')
+        return (check_four_forward(info, y, x - 1));
+    return (0);
+}
+
+int check_row3(t_map *map)
+{
+    // 세로 값
+    int i = -1;
+    // 가로 값
+    int j;
+    
+    int height = map->height;
+    int width;
+    while (++i < height)
+    {
+        j = -1;
+        width = ft_strlen(map->map[i]);
+        // printf("%d\n", width);
+        // printf("%s\n", map->map[i]);
+        while (++j < width)
+        {
+            // printf("%c", map->map[i][j]);
+            if (map->map[i][j] == '0')
+            {
+                // printf("hello\n");
+                check_four_forward(map, i, j);
+            }
+        }
+        // printf("\n");
+    }
+    return 0;
+}
 // 조건
 // 1. 사방이 전부 1로 둘러싸여야한다.
 // 2번 조건 다른 게 있을까? 없는 것 같은디...
 // 주변이 1로 둘러쌓여 잇으면 되는 건데 그 왜 조건 있나?
-
 
 int	check_map(t_map *info)
 {
@@ -142,18 +207,27 @@ int	check_map(t_map *info)
         if (i == 0 || i == info->map_len - 1)
         {
             if (check_row(info->map[i]))
-                ft_error("ERROR: map isn't surrounded wall\n");
+            {
+                printf("%s\n", info->map[i]);
+                // ft_error("ERROR: map isn't surrounded wall\n");
+                // printf("wrong map\n");
+                return (1);
+            }
+            
         }
         else
         {
             if (check_row2(info->map[i]))
+            {
                 ft_error("ERROR: map isn't surrounded wall\n");
+                return (1);
+            }
         }
     }
-    // 0이라면 상하좌우 끝은 결국 1로 둘러쌓여 있어야 한다.
-    while (++i < info->map_len)
+    if (check_row3(info))
     {
-
+        ft_error("ERROR: map isn't surrounded wall\n");
+        return (1);   
     }
 	return (0);
 }

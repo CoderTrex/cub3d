@@ -77,7 +77,7 @@ int parsing_all(int fd, t_map *map_all)
 		|| parsing_color(map_all->full_path, &map_all->cell_color, "C ")
         || parsing_map(map_all, map_all->full_path)) // 문제점 2차원 배열을 null일 때까지 접근하면 segmentfault가 뜨는데 왜 그런지 모르겠음
         {
-            printf("hello\n");
+            printf("map format is wrong\n");
         }
 
     // printf("\n");
@@ -132,9 +132,11 @@ int ft_parsing_master(char **argv, t_game *game_all)
 		while (count < game_all->map.map_len)
 		{
             free(game_all->map.map[count]);
+            free(game_all->map.map_cp[count]);
 			count++;
 		}
 		free(game_all->map.map);
+		free(game_all->map.map_cp);
 	}
     printf("\n");
     return 0;
