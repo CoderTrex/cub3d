@@ -30,7 +30,6 @@ typedef struct s_map
 	char 	*full_path;
 	char	**map;
 	char	**map_cp;
-	
 	int		map_len;
 	int		width;
 	int		height;
@@ -38,8 +37,9 @@ typedef struct s_map
 	unsigned int floor_color;
 	unsigned int cell_color;
 	
-	unsigned int px;
-	unsigned int py;
+	unsigned int 	px;
+	unsigned int 	py;
+	char			pos;
 }	t_map;
 
 typedef struct s_color

@@ -63,7 +63,30 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
 	return (0);
 }
 
-int parsing_all(int fd, t_map *map_all)
+
+int	parsing_texture(t_map *map, t_img *img)
+{
+    img->north = create_line(map->full_path, "NO ");
+    img->east = create_line(map->full_path, "EA ");
+    img->west = create_line(map->full_path, "WE ");
+    img->south = create_line(map->full_path, "SO ");
+
+    // printf("%s\n", img->north);
+    // printf("%s\n", img->east);
+    // printf("%s\n", img->west);
+    // printf("%s\n", img->south);
+
+	if (!(img->north) || !(img->west)
+		|| !(img->south) || !(img->east))
+		return (ft_error("path is wrong\n"));
+	return (0);
+}
+
+
+
+
+
+int parsing_all(int fd, t_game *game_all, t_map *map_all)
 {
     int ret;
 
@@ -75,7 +98,8 @@ int parsing_all(int fd, t_map *map_all)
         return ft_error("");
     if (parsing_color(map_all->full_path, &map_all->floor_color, "F ")
 		|| parsing_color(map_all->full_path, &map_all->cell_color, "C ")
-        || parsing_map(map_all, map_all->full_path)) // 문제점 2차원 배열을 null일 때까지 접근하면 segmentfault가 뜨는데 왜 그런지 모르겠음
+        || parsing_map(map_all, map_all->full_path) // 문제점 2차원 배열을 null일 때까지 접근하면 segmentfault가 뜨는데 왜 그런지 모르겠음
+        || parsing_texture(map_all, &game_all->img))
         {
             printf("map format is wrong\n");
         }
@@ -104,7 +128,7 @@ int init_input(t_game *game_all, char *map_path)
         return (ft_error("map isn't exist\n"));
     printf("\nmap is open\n");
     // (void)game_all;
-    if (parsing_all(fd, &game_all->map))
+    if (parsing_all(fd, game_all, &game_all->map))
         return (ft_error("map parsing error\n"));
     close(fd);
     printf("map is closed\n");
@@ -122,11 +146,48 @@ int ft_parsing_master(char **argv, t_game *game_all)
         return (1);
 
 
+
+    printf("-------------TEST-------------\n");
+    printf("TEXTURE\n");
+    printf("NORTH %s\n", game_all->img.north);
+    printf("WEST %s\n", game_all->img.west);
+    printf("SOUTH %s\n", game_all->img.south);
+    printf("EAST %s\n", game_all->img.east);
+    printf("\n\n");
+
+    printf("FLOOR COLOR\n");
+    printf("R: %d ", get_r(game_all->map.floor_color));
+    printf("G: %d ", get_g(game_all->map.floor_color));
+    printf("B: %d ", get_b(game_all->map.floor_color));
+    printf("\n");
+    printf("CELL COLOR\n");
+    printf("R: %d ", get_r(game_all->map.cell_color));
+    printf("G: %d ", get_g(game_all->map.cell_color));
+    printf("B: %d ", get_b(game_all->map.cell_color));
+    printf("\n\n");
+    
+    printf("MAP and MAP height and width\n");
+    int i = -1;
+    while (++i < game_all->map.map_len)
+        printf("%s\n", game_all->map.map[i]);
+    printf("height: %d ", game_all->map.height);
+    printf("width : %d ", game_all->map.width);
+    printf("\n\n");
+    
+    printf("CHARACTER POSITION\n");
+    printf("x: %d, y: %d\n", game_all->map.px, game_all->map.py);
+    printf("position: %c", game_all->map.pos);
+    printf("\n\n");
+
     // 나중에 전부다 free하는 함수 만들어야겠다.
     free(game_all->map.full_path);
+    free(game_all->img.east);
+    free(game_all->img.north);
+    free(game_all->img.south);
+    free(game_all->img.west);
     // Free2DArray(game_all->map.map);
-
-	int count = 0;
+	
+    int count = 0;
 	if (game_all->map.map)
 	{
 		while (count < game_all->map.map_len)
@@ -138,6 +199,7 @@ int ft_parsing_master(char **argv, t_game *game_all)
 		free(game_all->map.map);
 		free(game_all->map.map_cp);
 	}
+    
     printf("\n");
     return 0;
 }

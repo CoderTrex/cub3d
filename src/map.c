@@ -69,16 +69,17 @@ int	check_spawn(t_map *map)
             {
                 if (map->map[i][j] == 'N' || map->map[i][j] == 'W'
                 || map->map[i][j] == 'E' || map->map[i][j] == 'S')
+                {
                     map->py = j;
-            }
+                    map->pos = map->map[i][j];
+                }
             
+            }
+
         }
     }
     if (character == 1)
-    {
-        // printf("character position: %d, %d\n", map->px, map->py);
         return (0);
-    }
     return (1);
 }
 
