@@ -53,44 +53,53 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
         return (ft_error("\nRGB: ERROR\n"));
 	}
 
-    printf("\nR: %d", color_s.R);
-    printf("\nG: %d", color_s.G);
-    printf("\nB: %d", color_s.B);
-    printf("\n");
+    // printf("\nR: %d", color_s.R);
+    // printf("\nG: %d", color_s.G);
+    // printf("\nB: %d", color_s.B);
+    // printf("\n");
 	Free2DArray(split);
 	free(line);
 	*color = make_rgb(color_s.R, color_s.G, color_s.B);
 	return (0);
 }
 
-int	find_map(char *full_file)
+int	find_map(char *full_file, t_map *info)
 {
 
     char    **check;
     int     number = 0;
+    int     total  = -1;
     int     i = -1;
-    check = ft_split(full_file, '\n');
 
-    // while (check[++i])
-    // {
-    //     printf("%s\n", check[i]);
-    // }
+    check = ft_split(full_file, '\n');
+    // printf("test\n");
+    // printf("test\n");
+    while (check[++total]);
+        // printf("\n%s", check[total]);
+    // printf("test\n");
+    // printf("test\n");
 
     while (check[++i])
     {
+        // printf("check: %d, %s\n", i, check[i]);
         if (ft_strstr(check[i], "NO") || ft_strstr(check[i], "EA")
             || ft_strstr(check[i], "SO") || ft_strstr(check[i], "WE")
             || ft_strstr(check[i], "F ") || ft_strstr(check[i], "C "))
-            {
-                printf("check: %s\n", check[i]);
                 number++;
-            }
-        // else if (ft_strchr(check[i], '\n'))
-        //     continue;
         if (number == 6 && ft_strchr(check[i], '1'))
         {
-            // printf("MPosition: %s\n", check[i]);
-            // printf("MPosition: %d\n", i);
+            // (void)info;
+            info->map = (char **)malloc(sizeof(char *) * total - 6);
+            printf("ddd: %d\n", total - 5);
+            int j = 0;
+            while (total > i)
+                info->map[j++] = ft_strdup(check[i++]);
+            info->map_len = j;
+            // j = 0;
+            // printf("TEST\n");
+            // while (j != 14)
+            //     printf("%s\n", info->map[j++]);
+            Free2DArray(check);
             return i;
         }
     }
@@ -105,8 +114,8 @@ int	parsing_map(t_map *info, char *full_path)
 
     // 0번부터 시작하는 인덱스이다.
     // 만약 처음 시작이 1이라면 start_index에 1을 더해주도록한다.
-	start_index = find_map(full_path);
-    printf("\nstart index: %d\n", start_index);
+	start_index = find_map(full_path, info);
+    // printf("\nstart index: %d\n", start_index);
 
     if (start_index == -1)
 		return (ft_error("Invalid map area"));
@@ -121,26 +130,26 @@ int parsing_all(int fd, t_map *map_all)
     ret = read_till_end(fd, &(map_all->full_path));
     int i = 0;
 
-    printf("%s", map_all->full_path);
+    // printf("%s", map_all->full_path);
     if (ret == -1)
         return ft_error("");
     if (parsing_color(map_all->full_path, &map_all->floor_color, "F ")
-		|| parsing_color(map_all->full_path, &map_all->cell_color, "C "))
-        // || parsing_map(map_all, map_all->full_path))
+		|| parsing_color(map_all->full_path, &map_all->cell_color, "C ")
+        || parsing_map(map_all, map_all->full_path)) // 문제점 2차원 배열을 null일 때까지 접근하면 segmentfault가 뜨는데 왜 그런지 모르겠음
         {
             printf("hello\n");
         }
 
-    printf("\n");
-    printf("floor parsing\n");
-    printf("floor R: %d\n", get_r(map_all->floor_color));
-    printf("floor G: %d\n", get_g(map_all->floor_color));
-    printf("floor B: %d\n", get_b(map_all->floor_color));
-    printf("\n");
-    printf("cell parsing\n");
-    printf("cell R: %d\n", get_r(map_all->cell_color));
-    printf("cell G: %d\n", get_g(map_all->cell_color));
-    printf("cell B: %d\n", get_b(map_all->cell_color));
+    // printf("\n");
+    // printf("floor parsing\n");
+    // printf("floor R: %d\n", get_r(map_all->floor_color));
+    // printf("floor G: %d\n", get_g(map_all->floor_color));
+    // printf("floor B: %d\n", get_b(map_all->floor_color));
+    // printf("\n");
+    // printf("cell parsing\n");
+    // printf("cell R: %d\n", get_r(map_all->cell_color));
+    // printf("cell G: %d\n", get_g(map_all->cell_color));
+    // printf("cell B: %d\n", get_b(map_all->cell_color));
 
     return i;
 }
@@ -175,7 +184,20 @@ int ft_parsing_master(char **argv, t_game *game_all)
 
     // 나중에 전부다 free하는 함수 만들어야겠다.
     free(game_all->map.full_path);
-
+    // int i = -1;
+    // while (game_all->map.map[++i] != NULL)
+    //     printf("%d, %s\n", i, game_all->map.map[i]);
+    // Free2DArray(game_all->map.map);
+	int count = 0;
+	if (game_all->map.map)
+	{
+		while (count < game_all->map.map_len)
+		{
+            free(game_all->map.map[count]);
+			count++;
+		}
+		free(game_all->map.map);
+	}
     printf("\n");
     return 0;
 }

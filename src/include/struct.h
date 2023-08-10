@@ -29,6 +29,7 @@ typedef struct s_map
 {
 	char 	*full_path;
 	char	**map;
+	int		map_len;
 	int		width;
 	int		height;
 
