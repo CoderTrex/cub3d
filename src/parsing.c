@@ -46,17 +46,17 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
     //     printf("split%d: %s\n", i, split[i]);
     // }
     
-    if (!check_rgb(split, &color_s))
+    if (check_rgb(split, &color_s))
 	{
 		Free2DArray(split);
 		free(line);
-        return (ft_error("ERROR\n"));
+        return (ft_error("\nRGB: ERROR\n"));
 	}
 
-    // printf("\nR: %d", color_s.R);
-    // printf("\nG: %d", color_s.G);
-    // printf("\nB: %d", color_s.B);
-    // printf("\n");
+    printf("\nR: %d", color_s.R);
+    printf("\nG: %d", color_s.G);
+    printf("\nB: %d", color_s.B);
+    printf("\n");
 	Free2DArray(split);
 	free(line);
 	*color = make_rgb(color_s.R, color_s.G, color_s.B);
@@ -121,26 +121,26 @@ int parsing_all(int fd, t_map *map_all)
     ret = read_till_end(fd, &(map_all->full_path));
     int i = 0;
 
-    // printf("%s", map_all->full_path);
+    printf("%s", map_all->full_path);
     if (ret == -1)
         return ft_error("");
     if (parsing_color(map_all->full_path, &map_all->floor_color, "F ")
-		|| parsing_color(map_all->full_path, &map_all->cell_color, "C ")
-        || parsing_map(map_all, map_all->full_path))
+		|| parsing_color(map_all->full_path, &map_all->cell_color, "C "))
+        // || parsing_map(map_all, map_all->full_path))
         {
             printf("hello\n");
         }
 
-    // printf("\n");
-    // printf("floor parsing\n");
-    // printf("floor R: %d\n", get_r(map_all->floor_color));
-    // printf("floor G: %d\n", get_g(map_all->floor_color));
-    // printf("floor B: %d\n", get_b(map_all->floor_color));
-    // printf("\n");
-    // printf("cell parsing\n");
-    // printf("cell R: %d\n", get_r(map_all->cell_color));
-    // printf("cell G: %d\n", get_g(map_all->cell_color));
-    // printf("cell B: %d\n", get_b(map_all->cell_color));
+    printf("\n");
+    printf("floor parsing\n");
+    printf("floor R: %d\n", get_r(map_all->floor_color));
+    printf("floor G: %d\n", get_g(map_all->floor_color));
+    printf("floor B: %d\n", get_b(map_all->floor_color));
+    printf("\n");
+    printf("cell parsing\n");
+    printf("cell R: %d\n", get_r(map_all->cell_color));
+    printf("cell G: %d\n", get_g(map_all->cell_color));
+    printf("cell B: %d\n", get_b(map_all->cell_color));
 
     return i;
 }
@@ -148,7 +148,6 @@ int parsing_all(int fd, t_map *map_all)
 // 들어오는 입력에 대해서 구조체에 초기화 하는 함수
 int init_input(t_game *game_all, char *map_path)
 {
-    
     int fd;
 
     fd = open(map_path, O_RDONLY);
@@ -166,11 +165,17 @@ int init_input(t_game *game_all, char *map_path)
 // 파씽 전부다 마무리하는 함수
 int ft_parsing_master(char **argv, t_game *game_all)
 {
+    // (void)argv;
     // (void)game_all;
     // printf("%s", argv[1]);
 
     if (init_input(game_all, argv[1]))
         return (1);
+
+
+    // 나중에 전부다 free하는 함수 만들어야겠다.
+    free(game_all->map.full_path);
+
     printf("\n");
     return 0;
 }

@@ -49,7 +49,7 @@ int	check_rgb(char **split, t_color *color_s)
     
     while (split[i])
 	{
-        // printf("split test: %s\n", split[i]);
+        printf("\nsplit test: %s", split[i]);
         if (ft_isdigitString(split[i]))
         {
             return (ft_error("RGB is not correct Value2\n"));
@@ -65,7 +65,7 @@ int	check_rgb(char **split, t_color *color_s)
             color_s->B = number;
         i++;
 	}
-
+    printf("\n\nWhat is RGB: %d, %d, %d", color_s->R, color_s->G, color_s->B);
 	return (0);
 }
 
