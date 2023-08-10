@@ -109,7 +109,7 @@ int	parsing_map(t_map *info, char *full_path)
     printf("\nstart index: %d\n", start_index);
 
     if (start_index == -1)
-		return (error_msg("Invalid map area"));
+		return (ft_error("Invalid map area"));
 	
 	return (0);
 }
