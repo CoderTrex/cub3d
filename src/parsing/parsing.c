@@ -1,4 +1,4 @@
-#include "./include/cub3d.h"
+#include "../../include/cub3d.h"
 // 맵 전체
 // 캐릭터
 // 텍스쳐
@@ -94,8 +94,7 @@ int	parsing_texture(t_map *map, t_img *img)
     // img->east = create_line(map->full_path, "EA ");
     // img->west = create_line(map->full_path, "WE ");
     // img->south = create_line(map->full_path, "SO ");
-    
-    
+
     char *tmp[4];
 
     tmp[0] = create_line(map->full_path, "NO ");
@@ -199,29 +198,29 @@ int ft_parsing_master(char **argv, t_game *game_all)
     printf("EAST %s\n", game_all->img.east);
     printf("\n\n");
 
-    // printf("FLOOR COLOR\n");
-    // printf("R: %d ", get_r(game_all->map.floor_color));
-    // printf("G: %d ", get_g(game_all->map.floor_color));
-    // printf("B: %d ", get_b(game_all->map.floor_color));
-    // printf("\n");
-    // printf("CELL COLOR\n");
-    // printf("R: %d ", get_r(game_all->map.cell_color));
-    // printf("G: %d ", get_g(game_all->map.cell_color));
-    // printf("B: %d ", get_b(game_all->map.cell_color));
-    // printf("\n\n");
+    printf("FLOOR COLOR\n");
+    printf("R: %d ", get_r(game_all->map.floor_color));
+    printf("G: %d ", get_g(game_all->map.floor_color));
+    printf("B: %d ", get_b(game_all->map.floor_color));
+    printf("\n");
+    printf("CELL COLOR\n");
+    printf("R: %d ", get_r(game_all->map.cell_color));
+    printf("G: %d ", get_g(game_all->map.cell_color));
+    printf("B: %d ", get_b(game_all->map.cell_color));
+    printf("\n\n");
     
-    // printf("MAP and MAP height and width\n");
-    // int i = -1;
-    // while (++i < game_all->map.map_len)
-    //     printf("%s\n", game_all->map.map[i]);
-    // printf("height: %d ", game_all->map.height);
-    // printf("width : %d ", game_all->map.width);
-    // printf("\n\n");
+    printf("MAP and MAP height and width\n");
+    int i = -1;
+    while (++i < game_all->map.map_len)
+        printf("%s\n", game_all->map.map[i]);
+    printf("height: %d ", game_all->map.height);
+    printf("width : %d ", game_all->map.width);
+    printf("\n\n");
     
-    // printf("CHARACTER POSITION\n");
-    // printf("x: %d, y: %d\n", game_all->map.px, game_all->map.py);
-    // printf("position: %c", game_all->map.pos);
-    // printf("\n\n");
+    printf("CHARACTER POSITION\n");
+    printf("x: %d, y: %d\n", game_all->map.px, game_all->map.py);
+    printf("position: %c", game_all->map.pos);
+    printf("\n\n");
 
     // 나중에 전부다 free하는 함수 만들어야겠다.
     free(game_all->map.full_path);

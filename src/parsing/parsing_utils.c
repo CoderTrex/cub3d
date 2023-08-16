@@ -1,4 +1,4 @@
-#include "./include/cub3d.h"
+#include "../../include/cub3d.h"
 
 void	ft_strcpy(char *dst, const char *src)
 {

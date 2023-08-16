@@ -1,4 +1,4 @@
-#include "./include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int	find_map(char *full_file, t_map *info)
 {
