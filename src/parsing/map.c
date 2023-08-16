@@ -73,9 +73,7 @@ int	check_spawn(t_map *map)
                     map->py = j;
                     map->pos = map->map[i][j];
                 }
-            
             }
-
         }
     }
     if (character == 1)
@@ -132,39 +130,92 @@ int check_row2(char *str)
 
 int check_four_forward(t_map *info, int y, int x)
 {
-    // printf("y: %d, x: %d, map[y][x]: %c\n", y, x, info->map_cp[y][x]);
+    // if (y == 6)
+    //     printf("y: %d, x: %d, map[y][x]: %c\n", y, x, info->map_cp[y][x]);
     // 마지막(인덱스의 범위가 0미만 혹은 width보다 큰 경우) 까지 간 경우 -> 1을 못찾아서 종료를 못함.
     if (y < 0 || x < 0 || y == info->height || x == info->width)
     {
-        printf("test: ERROR four forward %c\n", info->map_cp[y][x]);
+        printf("test: ERROR four forward %c\n", info->map_cp2[y][x]);
         return (1);
     }
-    if (info->map_cp[y + 1][x] == ' ' || info->map_cp[y][x + 1] == ' '
-        || info->map_cp[y - 1][x] == ' ' || info->map_cp[y][x - 1] == ' '
-        || info->map_cp[y][x] == ' ')
+    if (info->map_cp2[y + 1][x] == '3' || info->map_cp2[y][x + 1] == '3'
+        || info->map_cp2[y - 1][x] == '3' || info->map_cp2[y][x - 1] == '3'
+        || info->map_cp2[y][x] == '3')
         // 아래로 내려갈 때 공간이 안막혀 있는 에러는 처리가 아직 안됨...
         // || info->map_cp[y - 1][x] == 'N' || info->map_cp[y + 1][x] == 'N')
     {
-        printf("test: ERROR four forward %c\n", info->map_cp[y][x]);
+        printf("test: ERROR four forward %c, and position: %d, %d\n", info->map_cp2[y][x], x, y);
         return (1);
     }
+    // printf("%c, %d\n", info->map_cp[y][x], info->map_cp[y][x]);
 
-    if (y == 5 && x == 31)
-        printf("5, 31 : %c\n", info->map_cp[5][31]);
-
-    info->map_cp[y][x] = '1';
+    info->map_cp2[y][x] = '1';
     // printf("%c", info->map[y][x]);
     // 만약 다음것이 0이라면 재귀로 반복
-    if (info->map_cp[y - 1][x] == '0')
+    if (info->map_cp2[y - 1][x] == '0')
         return (check_four_forward(info, y - 1, x));
-    if (info->map_cp[y + 1][x] == '0')
+    if (info->map_cp2[y + 1][x] == '0')
         return (check_four_forward(info, y + 1, x));
-    if (info->map_cp[y][x + 1] == '0')
+    if (info->map_cp2[y][x + 1] == '0')
         return (check_four_forward(info, y, x + 1));
-    if (info->map_cp[y][x - 1] == '0')
+    if (info->map_cp2[y][x - 1] == '0')
         return (check_four_forward(info, y, x - 1));
     return (0);
 }
+
+// 원본 배열을 복사하여 새로운 2차원 배열 생성
+char** copy_array(char** src, int rows, int cols) 
+{
+    char** dest = (char**)malloc(rows * sizeof(char *) + 1);
+    for (int i = 0; i < rows; i++)
+    {
+        dest[i] = (char *)malloc(cols * sizeof(char) + 1);
+        for (int j = 0; j < cols; j++) 
+            dest[i][j] = src[i][j];
+        dest[i][cols] = '\0';
+    }
+    dest[rows] = NULL;
+    return dest;
+}
+
+void remake_map(t_map *map)
+{
+    char **newmap;
+    int i;
+    int j;
+
+    i = -1;
+    newmap = (char **)malloc(sizeof(char *) * map->height + 1);
+    while (++i < map->height)
+    {
+
+        newmap[i] = (char *)malloc(sizeof(char *) * map->width + 1);
+        j = -1;
+        int width_ori_len = ft_strlen(map->map[i]);
+        while (++j < map->width)
+        {
+            if (j >= width_ori_len)
+                newmap[i][j] = '3';
+            else if (map->map[i][j] == '0' || map->map[i][j] == '1'
+                || map->map[i][j] == 'N' || map->map[i][j] == 'S'
+                || map->map[i][j] == 'W' || map->map[i][j] == 'E')
+                    newmap[i][j] = map->map[i][j];
+            else{
+                newmap[i][j] = '3';
+            }
+        }
+        newmap[i][j] = '\0';
+    }
+    newmap[map->height] = NULL;
+    // printf("%s\n", newmap[0]);
+    map->map_cp2 = copy_array(newmap, map->height, map->width);
+    for (int i = 0; i < map->height; i++)
+    {
+        printf("%s\n", map->map_cp2[i]);
+    }
+    Free2DArray(newmap);
+}
+
 
 int check_row3(t_map *map)
 {
@@ -175,6 +226,8 @@ int check_row3(t_map *map)
     
     int height = map->height;
     int width;
+    remake_map(map);
+
     while (++i < height)
     {
         j = -1;
@@ -192,6 +245,14 @@ int check_row3(t_map *map)
         }
         // printf("\n");
     }
+
+    // 바뀐 맵 확인
+    // map->map_cp[5][30] = '4';
+    // for (int i =0; i < map->map_len; i++)
+    // {
+    //     printf("%s\n", map->map_cp[i]);
+    // }
+    
     return 0;
 }
 // 조건

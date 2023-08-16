@@ -17,7 +17,7 @@ int check_map_format(char *argv)
     int len;
 
     len = ft_strlen(argv);
-    printf("argv len %d\n", len);
+    // printf("argv len %d\n", len);
     if (len < 5 || argv[len - 1] != 'b'
         || argv[len - 2] != 'u' || argv[len - 3] != 'c'
         || argv[len - 4] != '.')
