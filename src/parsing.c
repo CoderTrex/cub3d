@@ -66,15 +66,15 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
 
 int	parsing_texture(t_map *map, t_img *img)
 {
-    img->north = create_line(map->full_path, "NO ");
+    img->north = create_line(map->full_path, "NT ");
     img->east = create_line(map->full_path, "EA ");
     img->west = create_line(map->full_path, "WE ");
     img->south = create_line(map->full_path, "SO ");
 
-    // printf("%s\n", img->north);
-    // printf("%s\n", img->east);
-    // printf("%s\n", img->west);
-    // printf("%s\n", img->south);
+    printf("%s\n", img->north);
+    printf("%s\n", img->east);
+    printf("%s\n", img->west);
+    printf("%s\n", img->south);
 
 	if (!(img->north) || !(img->west)
 		|| !(img->south) || !(img->east))
