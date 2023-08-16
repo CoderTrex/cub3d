@@ -63,18 +63,66 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
 	return (0);
 }
 
+char *removeSpaces(char *input)
+{
+    int j = 0;
+    char *output;
+ 
+    for (int i = 0; input[i] != '\0'; i++) {
+        if (input[i] != ' ' && input[i] > 0) {
+            // printf("test : %c\n", input[i]);
+            // printf("test : %d\n", input[i]);
+            j++;
+        }
+    }
+    output = malloc(sizeof(char *) * j);
+    
+    j = 0;
+    for (int i = 0; input[i] != '\0'; i++) {
+        if (input[i] != ' ' && input[i] > 0) {
+            output[j] = input[i];
+            j++;
+        }
+    }
+    output[j] = '\0'; // 문자열의 끝을 나타내기 위해 널 문자를 추가
+    return (output);
+}
 
 int	parsing_texture(t_map *map, t_img *img)
 {
-    img->north = create_line(map->full_path, "NT ");
-    img->east = create_line(map->full_path, "EA ");
-    img->west = create_line(map->full_path, "WE ");
-    img->south = create_line(map->full_path, "SO ");
+    // img->north = create_line(map->full_path, "NO ");
+    // img->east = create_line(map->full_path, "EA ");
+    // img->west = create_line(map->full_path, "WE ");
+    // img->south = create_line(map->full_path, "SO ");
+    
+    
+    char *tmp[4];
 
-    printf("%s\n", img->north);
-    printf("%s\n", img->east);
-    printf("%s\n", img->west);
-    printf("%s\n", img->south);
+    tmp[0] = create_line(map->full_path, "NO ");
+    tmp[1] = create_line(map->full_path, "EA ");
+    tmp[2] = create_line(map->full_path, "WE ");
+    tmp[3] = create_line(map->full_path, "SO ");
+    
+    // for (int i = 0; i < 4; i++)
+    // {
+    //     printf("%s\n", tmp[i]);
+    // }
+
+    img->north = removeSpaces(tmp[0]);
+    img->east = removeSpaces(tmp[1]);
+    img->west = removeSpaces(tmp[2]);
+    img->south = removeSpaces(tmp[3]);
+
+    free(tmp[0]);
+    free(tmp[1]);
+    free(tmp[2]);
+    free(tmp[3]);
+
+    // printf("%s\n", img->north);
+    // printf("%s\n", img->east);
+    // printf("%s\n", img->west);
+    // printf("%s\n", img->south);
+
 
 	if (!(img->north) || !(img->west)
 		|| !(img->south) || !(img->east))
@@ -143,13 +191,13 @@ int ft_parsing_master(char **argv, t_game *game_all)
 
 
 
-    // printf("-------------TEST-------------\n");
-    // printf("TEXTURE\n");
-    // printf("NORTH %s\n", game_all->img.north);
-    // printf("WEST %s\n", game_all->img.west);
-    // printf("SOUTH %s\n", game_all->img.south);
-    // printf("EAST %s\n", game_all->img.east);
-    // printf("\n\n");
+    printf("-------------TEST-------------\n");
+    printf("TEXTURE\n");
+    printf("NORTH %s\n", game_all->img.north);
+    printf("WEST %s\n", game_all->img.west);
+    printf("SOUTH %s\n", game_all->img.south);
+    printf("EAST %s\n", game_all->img.east);
+    printf("\n\n");
 
     // printf("FLOOR COLOR\n");
     // printf("R: %d ", get_r(game_all->map.floor_color));

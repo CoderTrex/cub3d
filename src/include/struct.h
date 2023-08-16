@@ -18,10 +18,10 @@ typedef struct s_img
 	int		floor;
 	int		ceil;
 
-	void	*north;
-	void	*south;
-	void	*west;
-	void	*east;
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
 	void	*tmp;
 }	t_img;
 
