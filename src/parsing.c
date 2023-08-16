@@ -82,10 +82,6 @@ int	parsing_texture(t_map *map, t_img *img)
 	return (0);
 }
 
-
-
-
-
 int parsing_all(int fd, t_game *game_all, t_map *map_all)
 {
     int ret;
@@ -147,37 +143,37 @@ int ft_parsing_master(char **argv, t_game *game_all)
 
 
 
-    printf("-------------TEST-------------\n");
-    printf("TEXTURE\n");
-    printf("NORTH %s\n", game_all->img.north);
-    printf("WEST %s\n", game_all->img.west);
-    printf("SOUTH %s\n", game_all->img.south);
-    printf("EAST %s\n", game_all->img.east);
-    printf("\n\n");
+    // printf("-------------TEST-------------\n");
+    // printf("TEXTURE\n");
+    // printf("NORTH %s\n", game_all->img.north);
+    // printf("WEST %s\n", game_all->img.west);
+    // printf("SOUTH %s\n", game_all->img.south);
+    // printf("EAST %s\n", game_all->img.east);
+    // printf("\n\n");
 
-    printf("FLOOR COLOR\n");
-    printf("R: %d ", get_r(game_all->map.floor_color));
-    printf("G: %d ", get_g(game_all->map.floor_color));
-    printf("B: %d ", get_b(game_all->map.floor_color));
-    printf("\n");
-    printf("CELL COLOR\n");
-    printf("R: %d ", get_r(game_all->map.cell_color));
-    printf("G: %d ", get_g(game_all->map.cell_color));
-    printf("B: %d ", get_b(game_all->map.cell_color));
-    printf("\n\n");
+    // printf("FLOOR COLOR\n");
+    // printf("R: %d ", get_r(game_all->map.floor_color));
+    // printf("G: %d ", get_g(game_all->map.floor_color));
+    // printf("B: %d ", get_b(game_all->map.floor_color));
+    // printf("\n");
+    // printf("CELL COLOR\n");
+    // printf("R: %d ", get_r(game_all->map.cell_color));
+    // printf("G: %d ", get_g(game_all->map.cell_color));
+    // printf("B: %d ", get_b(game_all->map.cell_color));
+    // printf("\n\n");
     
-    printf("MAP and MAP height and width\n");
-    int i = -1;
-    while (++i < game_all->map.map_len)
-        printf("%s\n", game_all->map.map[i]);
-    printf("height: %d ", game_all->map.height);
-    printf("width : %d ", game_all->map.width);
-    printf("\n\n");
+    // printf("MAP and MAP height and width\n");
+    // int i = -1;
+    // while (++i < game_all->map.map_len)
+    //     printf("%s\n", game_all->map.map[i]);
+    // printf("height: %d ", game_all->map.height);
+    // printf("width : %d ", game_all->map.width);
+    // printf("\n\n");
     
-    printf("CHARACTER POSITION\n");
-    printf("x: %d, y: %d\n", game_all->map.px, game_all->map.py);
-    printf("position: %c", game_all->map.pos);
-    printf("\n\n");
+    // printf("CHARACTER POSITION\n");
+    // printf("x: %d, y: %d\n", game_all->map.px, game_all->map.py);
+    // printf("position: %c", game_all->map.pos);
+    // printf("\n\n");
 
     // 나중에 전부다 free하는 함수 만들어야겠다.
     free(game_all->map.full_path);
