@@ -15,4 +15,4 @@
 
 ## 08.18
 
-Makefile 수정함: mlx/Makefile에 fclean 추가하기
+Makefile 수정함: mlx/Makefile도 fclean 추가하기
