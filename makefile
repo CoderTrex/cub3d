@@ -69,12 +69,14 @@ obj/%.o: src/%.c ./include/cub3d.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+	make clean -C $(MLX)
 	make clean -C libft/
-	rm -rf obj
-	rm -rf $(NAME)
+	rm -rf $(OBJS)
 
 fclean: clean
+	make fclean -C $(MLX)
 	make fclean -C libft/
+	rm -rf $(NAME)
 
 re:
 	make fclean
