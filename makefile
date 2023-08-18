@@ -46,21 +46,27 @@ SRCS =  src/main.c\
 		src/mlx/init_game.c
 
 OBJS = $(patsubst src/%.c,obj/%.o,$(SRCS))
-COMPILER = cc
-CFLAGS = -g -Wall -Werror -Wextra
+
+CC			=	cc
+CFLAGS		=	-g -Wall -Werror -Wextra
+CLIB		=	-Lmlx -lmlx -framework OpenGL -framework Appkit
+
+MLX			=	mlx/
+MLX_LIB		=	$(MLX)libmlx.a
 
 all: extern $(NAME)
 
 extern:
+	make -C $(MLX) all
 	make -C libft/
 
 $(NAME): $(OBJS)
-	$(COMPILER) -o $(NAME) $(OBJS) \
+	$(CC) -o $(NAME) $(CLIB) $(OBJS) \
 	libft/libft.a 
 
 obj/%.o: src/%.c ./include/cub3d.h
 	mkdir -p $(dir $@)
-	$(COMPILER) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	make clean -C libft/
@@ -70,6 +76,8 @@ clean:
 fclean: clean
 	make fclean -C libft/
 
-re: fclean all
+re:
+	make fclean
+	make all
 
 .PHONY: all extern clean fclean re
