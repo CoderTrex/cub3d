@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/18 17:52:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/18 18:01:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int	init_game(t_game *game)
 		return (1);
 	game->xpm = xpm;
 	init_img(&(game->xpm), game);
-	render_img(game);
+	//render_img(game);
 	return (0);
 }
