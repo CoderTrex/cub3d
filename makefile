@@ -46,7 +46,7 @@ SRCS =  src/main.c\
 
 OBJS = $(patsubst src/%.c,obj/%.o,$(SRCS))
 COMPILER = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 
 all: extern $(NAME)
 
