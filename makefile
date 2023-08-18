@@ -42,7 +42,8 @@ SRCS =  src/main.c\
 		src/parsing/parsing_utils.c\
 		src/parsing/color.c\
 		src/parsing/utils.c\
-		src/parsing/map.c
+		src/parsing/map.c\
+		src/mlx/init_game.c
 
 OBJS = $(patsubst src/%.c,obj/%.o,$(SRCS))
 COMPILER = cc

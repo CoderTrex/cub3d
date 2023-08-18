@@ -37,6 +37,8 @@ int main(int argc, char **argv)
         return (ft_error("map format is wrong\n"));
     if (ft_parsing_master(argv, &game_all))
         return (1);
+    if (init_game(&game_all))
+        return (1);
     atexit(leak_check);
     return (0);
 }

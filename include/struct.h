@@ -6,12 +6,23 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 18:51:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/18 16:55:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+# define WIDTH 640
+# define HEIGHT 480
+
+typedef struct s_xpm
+{
+	void	*north;
+	void	*south;
+	void	*west;
+	void	*east;
+}	t_xpm;
 
 typedef struct s_img
 {
@@ -57,6 +68,7 @@ typedef struct s_game
 
 	t_img	img;
 	t_map	map;
+	t_xpm	xpm;
 }	t_game;
 
 #endif
