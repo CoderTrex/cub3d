@@ -28,8 +28,8 @@ int	find_map(char *full_file, t_map *info)
         {
             // (void)info;
             // printf("size: %d\n", size);
-            info->map = (char **)malloc(sizeof(char *) * size);
-            info->map_cp = (char **)malloc(sizeof(char *) * size);
+            info->map = (char **)malloc(sizeof(char *) * size + 1);
+            info->map_cp = (char **)malloc(sizeof(char *) * size + 1);
             int j = 0;
             while (size - 1 > j)
             {
@@ -43,6 +43,10 @@ int	find_map(char *full_file, t_map *info)
             // info->map[j] = ft_strdup('\0');
             // printf("\ntest:\n%s", info->map[j]);
             
+            // 해당 요소 추가이후 free2Darray 에러 해결?
+            info->map[j] = NULL; 
+            info->map_cp[j] = NULL;
+
             info->map_len = j;
             Free2DArray(check);
             return i;

@@ -223,22 +223,26 @@ int ft_parsing_master(char **argv, t_game *game_all)
     free(game_all->img.north);
     free(game_all->img.south);
     free(game_all->img.west);
-    // Free2DArray(game_all->map.map);
 	
-    int count = 0;
-	if (game_all->map.map)
-	{
-		while (count < game_all->map.map_len)
-		{
-            free(game_all->map.map[count]);
-            free(game_all->map.map_cp[count]);
-            free(game_all->map.map_cp2[count]);
-			count++;
-		}
-		free(game_all->map.map);
-		free(game_all->map.map_cp);
-		free(game_all->map.map_cp2);
-	}
+
+    Free2DArray(game_all->map.map);
+    Free2DArray(game_all->map.map_cp);
+    Free2DArray(game_all->map.map_cp2);
+
+    // int count = 0;
+	// if (game_all->map.map)
+	// {
+	// 	while (count < game_all->map.map_len)
+	// 	{
+    //         free(game_all->map.map[count]);
+    //         free(game_all->map.map_cp[count]);
+    //         free(game_all->map.map_cp2[count]);
+	// 		count++;
+	// 	}
+	// 	free(game_all->map.map);
+	// 	free(game_all->map.map_cp);
+	// 	free(game_all->map.map_cp2);
+	// }
     
     printf("\n");
     return 0;
