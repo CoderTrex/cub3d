@@ -16,3 +16,5 @@
 ## 08.18
 
 Makefile 수정함: mlx/Makefile도 fclean 추가하기
+
+free_all() 함수 만들 것
