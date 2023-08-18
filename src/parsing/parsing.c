@@ -219,10 +219,10 @@ int ft_parsing_master(char **argv, t_game *game_all)
 
     // 나중에 전부다 free하는 함수 만들어야겠다.
     free(game_all->map.full_path);
-    free(game_all->img.east);
-    free(game_all->img.north);
-    free(game_all->img.south);
-    free(game_all->img.west);
+    // free(game_all->img.east);
+    // free(game_all->img.north);
+    // free(game_all->img.south);
+    // free(game_all->img.west);
     // Free2DArray(game_all->map.map);
 	
     int count = 0;

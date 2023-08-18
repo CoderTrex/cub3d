@@ -18,3 +18,5 @@
 Makefile 수정함: mlx/Makefile도 fclean 추가하기
 
 free_all() 함수 만들 것
+
+64byte leak은 어디서 나는 건지 모르겠음..

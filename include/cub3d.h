@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/18 17:22:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:39:34 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int				t_isdigitString(char *str);
 int				check_rgb(char **split, t_color *color_s);
 int				get_findex(char *str, char c);
 char			*ft_strstr(const char *text, const char *pattern);
+void			free_all(t_game *game);
 
 int				parsing_map(t_map *info, char *full_path);
 int				find_map(char *full_file, t_map *info);

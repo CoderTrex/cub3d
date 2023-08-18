@@ -103,3 +103,12 @@ char	*ft_strstr(const char *text, const char *pattern)
     }
     return NULL;
 }
+
+void    free_all(t_game *game)
+{
+    free(game->img.east);
+    free(game->img.north);
+    free(game->img.south);
+    free(game->img.west);
+    // free
+}

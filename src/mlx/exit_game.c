@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:18:42 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/18 17:20:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:43:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ void	end_game(t_game *game)
 {
 	destroy_img(game);
 	mlx_destroy_window(game->mlx, game->win);
-	//free_all();
-	exit(0);
+	free_all(game);
 }
