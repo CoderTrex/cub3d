@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/19 11:49:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/19 11:51:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				get_g(int rgb);
 int				get_b(int rgb);
 
 char			**Free2DArray(char **array);
-int				t_isdigitString(char *str);
+int				ft_isdigitString(char *str);
 int				check_rgb(char **split, t_color *color_s);
 int				get_findex(char *str, char c);
 char			*ft_strstr(const char *text, const char *pattern);
