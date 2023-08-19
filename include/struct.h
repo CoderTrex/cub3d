@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/18 16:55:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/19 11:48:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # define WIDTH 640
 # define HEIGHT 480
+
+# define W 13
+# define A 0
+# define S 1
+# define D 2
+# define ESC 53
 
 typedef struct s_xpm
 {
