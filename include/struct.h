@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/19 11:48:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/19 16:56:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_xpm
 
 typedef struct s_img
 {
-	int		floor;
-	int		ceil;
+	// int		floor;
+	// int		ceil;
 
 	char	*north;
 	char	*south;

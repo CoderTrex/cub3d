@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/19 12:12:31 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/19 14:57:59 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ int	render_img(t_game *game)
 	paint(game);
 	mlx_hook(game->win, 17, 0, end_game, game);
 	mlx_hook(game->win, 2, 0, key_press, game);
-	// background
 	return (0);
 }
