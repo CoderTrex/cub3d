@@ -24,7 +24,7 @@ int   find_map(char *full_file, t_map *info)
             || ft_strstr(check[i], "SO") || ft_strstr(check[i], "WE")
             || ft_strstr(check[i], "F ") || ft_strstr(check[i], "C "))
                 number++;
-        if (number == 6 && ft_strchr(check[i], '1'))
+        if (number == 6 && (ft_strchr(check[i], '1') && !ft_strchr(check[i], 'F') && !ft_strchr(check[i], 'C')))
         {
             // (void)info;
             // printf("size: %d\n", size);
@@ -34,7 +34,6 @@ int   find_map(char *full_file, t_map *info)
             while (size - 1 > j)
             {
                 // printf("i: %d j: %d ", i, j);
-                // printf("%s\n", check[i++]);
                 info->map[j] = ft_strdup(check[i]);
                 info->map_cp[j] = ft_strdup(check[i++]);
                 // printf("%s\n", info->map[j]);
