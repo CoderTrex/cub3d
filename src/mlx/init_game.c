@@ -6,11 +6,35 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/20 12:25:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/20 14:19:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	set_dir(t_game *game)
+{
+	if (game->map.pos == 'N')
+	{
+		game->xpm.dir_x = 0;
+		game->xpm.dir_y = -1;
+	}
+	else if (game->map.pos == 'S')
+	{
+		game->xpm.dir_x = 0;
+		game->xpm.dir_y = 1;
+	}
+	else if (game->map.pos == 'W')
+	{
+		game->xpm.dir_x = -1;
+		game->xpm.dir_y = 0;
+	}
+	else if (game->map.pos == 'E')
+	{
+		game->xpm.dir_x = 1;
+		game->xpm.dir_y = 0;
+	}
+}
 
 int	init_data(t_game *game)
 {
@@ -18,6 +42,11 @@ int	init_data(t_game *game)
 	if (!(game->mlx))
 		return (ft_error("Fail to start game\n"));
 	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3d");
+	game->xpm.pos_x = (double)game->map.px;
+	game->xpm.pos_y = (double)game->map.py;
+	set_dir(game);
+	game->xpm.plane_x = 0.0;
+	game->xpm.plane_y = 0.66;
 	return (0);
 }
 
