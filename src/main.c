@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     if (ft_parsing_master(argv, &game_all))
         return (1);
     if (init_game(&game_all))
-        return (1);
+        end_game(&game_all);
     end_game(&game_all);
     atexit(leak_check);
     return (0);
