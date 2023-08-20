@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/19 16:56:12 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/20 12:48:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ typedef struct s_xpm
 	void	*south;
 	void	*west;
 	void	*east;
+
+	void	*img;
+	int		*addr;
+	int		bpp;
+	int		endian;
+	int		size_l;
+	int		img_w;
+	int		img_h;
+
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	move_sp;
+	double	rot_sp;
 }	t_xpm;
 
 typedef struct s_img
