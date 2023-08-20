@@ -39,7 +39,7 @@ int main(int argc, char **argv)
         return (1);
     if (init_game(&game_all))
         end_game(&game_all);
-    end_game(&game_all);
+    // free_all(&game_all);
     atexit(leak_check);
     return (0);
 }
