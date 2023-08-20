@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/20 16:18:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/20 16:34:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define LEFT 123
 # define RIGHT 124
 # define KEY_PRESS 2
+# define KEY_RELEASE 3
 # define KEY_EXIT 17
 
 typedef struct s_xpm
