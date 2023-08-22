@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/20 16:34:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/22 17:24:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_xpm
 	int		*addr;
 	int		bpp;
 	int		endian;
-	int		size_l;
+	int		len;
 	int		img_w;
 	int		img_h;
 
