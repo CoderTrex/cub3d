@@ -35,3 +35,7 @@ map.c line 27: ft_strchr(check[i], '1') error<br />
 ## 08.20.
 
 Error 출력 시 Error\n 먼저 출력해야함
+
+---
+
+texture buf에 씌우고 출력하기
