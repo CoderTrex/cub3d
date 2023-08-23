@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/23 13:06:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:19:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	init_data(t_game *game)
 	game->xpm.backward = 0;
 	game->xpm.left = 0;
 	game->xpm.right = 0;
-	gmae->xpm.rrot = 0;
+	game->xpm.rrot = 0;
 	game->xpm.lrot = 0;
 	game->xpm.move_sp = 0.1;
 	game->xpm.rot_sp = 0.1;
@@ -86,10 +86,15 @@ int	init_game(t_game *game)
 	game->xpm = xpm;
 	if (init_img(&(game->xpm), game))
 		return (1);
-	// render_img(game);
+	// render_img(game); // del
+	// set_buf(game);
+	// print_img(game);
 	game->xpm.img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	game->xpm.addr = (int *)mlx_get_data_addr(game->xpm.img,
 			&(game->xpm.bpp), &(game->xpm.len), &(game->xpm.endian));
+	mlx_hook(game->win, KEY_EXIT, 0, end_game, game);
+	mlx_hook(game->win, KEY_PRESS, 0, key_press, game);
+	mlx_hook(game->win, KEY_RELEASE, 0, key_release, game);
 	mlx_loop_hook(game->mlx, move, game);
 	mlx_loop(game->mlx);
 	ft_error("Fail to start game\n");

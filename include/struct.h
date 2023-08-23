@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/23 12:45:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:14:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ typedef struct s_xpm
 	double	perpwalldist;
 	int		step_x;
 	int		step_y;
+	int		map_x;
+	int		map_y;
 
 	int		hit;
 	int		side;
