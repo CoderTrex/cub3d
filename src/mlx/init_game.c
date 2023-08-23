@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/20 15:44:44 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:06:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,19 @@ int	init_data(t_game *game)
 	if (!(game->mlx))
 		return (ft_error("Fail to start game\n"));
 	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3d");
-	game->xpm.pos_x = (double)game->map.px;
-	game->xpm.pos_y = (double)game->map.py;
+	game->xpm.pos_x = (double)game->map.px + 0.5;
+	game->xpm.pos_y = (double)game->map.py + 0.5;
 	set_dir(game);
 	game->xpm.plane_x = 0.0;
 	game->xpm.plane_y = 0.66;
+	game->xpm.forward = 0;
+	game->xpm.backward = 0;
+	game->xpm.left = 0;
+	game->xpm.right = 0;
+	gmae->xpm.rrot = 0;
+	game->xpm.lrot = 0;
+	game->xpm.move_sp = 0.1;
+	game->xpm.rot_sp = 0.1;
 	return (0);
 }
 
@@ -81,8 +89,8 @@ int	init_game(t_game *game)
 	// render_img(game);
 	game->xpm.img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	game->xpm.addr = (int *)mlx_get_data_addr(game->xpm.img,
-			&(game->xpm.bpp), &(game->xpm.size_l), &(game->xpm.endian));
-	mlx_loop_hook(game->mlx, render_img, game);
+			&(game->xpm.bpp), &(game->xpm.len), &(game->xpm.endian));
+	mlx_loop_hook(game->mlx, move, game);
 	mlx_loop(game->mlx);
 	ft_error("Fail to start game\n");
 	return (0);
