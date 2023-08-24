@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/23 15:19:56 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:00:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	init_data(t_game *game)
 	if (!(game->mlx))
 		return (ft_error("Fail to start game\n"));
 	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3d");
-	game->xpm.pos_x = (double)game->map.px + 0.5;
-	game->xpm.pos_y = (double)game->map.py + 0.5;
+	game->xpm.pos_x = (double)game->map.py + 0.5;
+	game->xpm.pos_y = (double)game->map.px + 0.5;
 	set_dir(game);
 	game->xpm.plane_x = 0.0;
 	game->xpm.plane_y = 0.66;

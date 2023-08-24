@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/23 16:14:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:40:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct s_xpm
 	int		step_y;
 	int		map_x;
 	int		map_y;
+	int		height;
+	int		start;
+	int		end;
 
 	int		hit;
 	int		side;
