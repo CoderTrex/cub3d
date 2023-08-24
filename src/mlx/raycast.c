@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/24 13:44:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:13:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,24 @@ void	cal_dda(t_game *game)
 	}
 }
 
+int	find_tex_idx(t_xpm *xpm)
+{
+	if (xpm->side == 0)
+	{
+		if (xpm->raydir_x < 0)
+			return (WEST);
+		else
+			return (EAST);
+	}
+	else
+	{
+		if (xpm->raydir_y < 0)
+			return (NORTH);
+		else
+			return (SOUTH);
+	}
+}
+
 void	get_hit_pos(t_game *game)
 {
 	if (game->xpm.side == 0)
@@ -50,28 +68,48 @@ void	get_hit_pos(t_game *game)
 		game->xpm.end = HEIGHT - 1;
 }
 
-void	set_texture(t_game *game, void *texture)
+unsigned int	get_color(t_game *game, t_tex *tex, int tex_y)
 {
-	if (game->xpm.side == 0)
+	char	*color;
+
+	color = tex->addr + (tex_y * tex->len + game->xpm.tex_x * (tex->bpp / 8));
+	return (*(unsigned int *)color);
+}
+
+void	put_pixel(t_game *game, int x, int y, unsigned int color)
+{
+	char	*dst;
+
+	dst = game->xpm.addr + (y * game->xpm.len + x * (game->xpm.bpp / 8));
+	*(unsigned int *)dst = color;
+}
+
+void	set_texture(t_game *game, int x, int num)
+{
+	int				i;
+	int				tex_y;
+	double			step;
+	double			tex_pos;
+	unsigned int	color;
+
+	step = 1.0 * IMG_H / game->xpm.height;
+	tex_pos = (game->xpm.start - HEIGHT / 2 + game->xpm.height / 2) * step;
+	i = game->xpm.start;
+	while (i < game->xpm.end)
 	{
-		if (game->xpm.raydir_x < 0)
-			add_tex = mlx_get_data_addr(game->mlx, )
-			
+		tex_y = (int)tex_pos & (IMG_H - 1);
+		tex_pos += step;
+		color = get_color(game, game->xpm.tex[num], tex_y);
+		put_pixel(game, x, i, color);
+		i++;
 	}
 }
 
 void	draw_texture(t_game *game, int i, int map_y, void *texture)
 {
-	int	y;
-	int	color;
+	int	num;
 
-	y = game->xpm.start;
-	while (y <= game->xpm.end)
-	{
-		game->xpm.tex_y = (int)game->xpm.tex_pos & (IMG_H - 1);
-		game->xpm.tex_pos += game->xpm.step;
-		color = ((int *)texture)[IMG_H * game->xpm.tex_y + game->xpm.tex_x];
-		game->buf[y][i] = color;
-		y++;
-	}
+	num = find_tex_idx(game->xpm);
+	get_hit_pos(game);
+	set_texture(game, i, num);
 }

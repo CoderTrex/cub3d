@@ -39,3 +39,7 @@ Error 출력 시 Error\n 먼저 출력해야함
 ---
 
 texture buf에 씌우고 출력하기
+
+---
+
+move: dir_*, plane_* 확인

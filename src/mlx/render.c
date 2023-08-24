@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/24 13:29:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:16:48 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void	paint_floor_ceiling(t_game *game)
 		x = 0;
 		while (x < WIDTH)
 		{
-			game->buf[y][x] = game->map.cell_color;
-			game->buf[HEIGHT - y - 1][x] = game->map.floor_color;
+			put_pixel(game, x, y, game->map.cell_color);
+			put_pixel(game, x, HEIGHT - y - 1, game->map.floor_color);
+			// game->buf[y][x] = game->map.cell_color;
+			// game->buf[HEIGHT - y - 1][x] = game->map.floor_color;
 			x++;
 		}
 		y++;
@@ -98,8 +100,7 @@ int	render_img(t_game *game)
 		init_ray(game, i);
 		cal_dda(game);
 		get_hit_pos(game);
-		if (game->xpm.side == 0 && game->xpm.step_x == 1)
-			draw_texture(game, i, game->xpm.map_y, game->xpm.north);
+		draw_texture(game, i, game->xpm.map_y, game->xpm.north);
 	}
 	// ray_casting(game);
 	//paint(game); // ray_casting에서 buf에 저장한 내용을 기반으로 pixel_put
