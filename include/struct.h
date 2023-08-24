@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/24 12:40:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:19:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,22 @@
 # define KEY_RELEASE 3
 # define KEY_EXIT 17
 
+# define NORTH 0
+# define SOUTH 1
+# define WEST 2
+# define EAST 3
+
+typedef struct s_tex
+{
+	void	*img;
+	void	*addr;
+	int		bpp;
+	int		endian;
+	int		len;
+	int		width;
+	int		height;
+}	t_tex;
+
 typedef struct s_xpm
 {
 	void	*north;
@@ -36,8 +52,10 @@ typedef struct s_xpm
 	void	*west;
 	void	*east;
 
+	t_tex	tex[4];
+
 	void	*img;
-	int		*addr;
+	void	*addr;
 	int		bpp;
 	int		endian;
 	int		len;
@@ -67,6 +85,10 @@ typedef struct s_xpm
 	int		height;
 	int		start;
 	int		end;
+	double	wall;
+	int		tex_x;
+	double	tex_y;
+	double	tex_y_step;
 
 	int		hit;
 	int		side;

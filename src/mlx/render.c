@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/24 12:01:55 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:29:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,9 @@ int	render_img(t_game *game)
 	{
 		init_ray(game, i);
 		cal_dda(game);
+		get_hit_pos(game);
+		if (game->xpm.side == 0 && game->xpm.step_x == 1)
+			draw_texture(game, i, game->xpm.map_y, game->xpm.north);
 	}
 	// ray_casting(game);
 	//paint(game); // ray_casting에서 buf에 저장한 내용을 기반으로 pixel_put

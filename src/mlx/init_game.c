@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/24 12:00:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:21:20 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,42 @@ int	init_img(t_xpm *xpm, t_game *game)
 	return (0);
 }
 
+int	init_texture(t_game *game, t_tex *tex, int i)
+{
+	char	*path;
+
+	if (i == NORTH)
+		path = game->img.north;
+	else if (i == SOUTH)
+		path = game->img.south;
+	else if (i == WEST)
+		path = game->img.west;
+	else if (i == EAST)
+		path = game->img.east;
+	tex->img = mlx_xpm_file_to_image(game->mlx, path, &(tex->width),
+			&(tex->height));
+	if (!(tex->img))
+		return (ft_error("Fail to load texture\n"));
+	tex->addr = mlx_get_data_addr(tex->img, &(tex->bpp), &(tex->len),
+			&(tex->endian));
+	return (0);
+}
+
 int	init_game(t_game *game)
 {
+	int		i;
 	t_xpm	xpm;
 
 	ft_bzero(&xpm, sizeof(xpm));
 	if (init_data(game))
 		return (1);
 	game->xpm = xpm;
-	if (init_img(&(game->xpm), game))
-		return (1);
+	// if (init_img(&(game->xpm), game))
+	// 	return (1);
+	i = -1;
+	while (++i < 4)
+		if (init_texture(game, game->tex[i], i))
+			return (1);
 	// render_img(game); // del
 	// set_buf(game);
 	// print_img(game);

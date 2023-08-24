@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/23 16:19:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:44:02 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int				find_map(char *full_file, t_map *info);
 int				init_game(t_game *game);
 
 void			cal_dda(t_game *game);
+void			screen(t_game *game);
 
 int				render_img(t_game *game);
 
