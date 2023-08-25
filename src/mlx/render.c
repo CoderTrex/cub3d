@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 12:35:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:25:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,6 @@ int	render_img(t_game *game)
 		get_hit_pos(game);
 		draw_texture(game, i);
 	}
-	// ray_casting(game);
-	//paint(game); // ray_casting에서 buf에 저장한 내용을 기반으로 pixel_put
 	return (0);
 }
 

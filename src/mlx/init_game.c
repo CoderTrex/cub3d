@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 12:37:19 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:25:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	init_data(t_game *game)
 	game->xpm.img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	game->xpm.addr = (int *)mlx_get_data_addr(game->xpm.img,
 			&(game->xpm.bpp), &(game->xpm.len), &(game->xpm.endian));
-	game->xpm.pos_x = (double)game->map.py + 0.5;
-	game->xpm.pos_y = (double)game->map.px + 0.5;
+	game->xpm.pos_x = (double)game->map.px + 0.5;
+	game->xpm.pos_y = (double)game->map.py + 0.5;
 	set_dir(game);
 	game->xpm.forward = 0;
 	game->xpm.backward = 0;
@@ -125,8 +125,6 @@ int	init_game(t_game *game)
 			return (1);
 	if (render_img(game) || print_img(game))
 		return (1);
-	// set_buf(game);
-	// print_img(game);
 	mlx_hook(game->win, KEY_EXIT, 0, end_game, game);
 	mlx_hook(game->win, KEY_PRESS, 0, key_press, game);
 	mlx_hook(game->win, KEY_RELEASE, 0, key_release, game);

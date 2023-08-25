@@ -48,3 +48,5 @@ plane도 방향에 따라 다 다르게 설정해야함
 ---
 
 raycast.c 31 에러(dda)
+wsad segfault 날 때도 있음..
+key hook 하고 화면 출력시켜야 함
