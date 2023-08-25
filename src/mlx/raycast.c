@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/24 17:13:38 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:34:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,23 +51,6 @@ int	find_tex_idx(t_xpm *xpm)
 	}
 }
 
-void	get_hit_pos(t_game *game)
-{
-	if (game->xpm.side == 0)
-		game->xpm.perpwalldist = (game->xpm.map_x - game->xpm.pos_x
-				+ (1 - game->xpm.step_x) / 2) / game->xpm.raydir_x;
-	else
-		game->xpm.perpwalldist = (game->xpm.map_y - game->xpm.pos_y
-				+ (1 - game->xpm.step_y) / 2) / game->xpm.raydir_y;
-	game->xpm.height = (int)(HEIGHT / game->xpm.perpwalldist);
-	game->xpm.start = HEIGHT / 2 - game->xpm.height / 2;
-	if (game->xpm.start < 0)
-		game->xpm.start = 0;
-	game->xpm.end = game->xpm.height / 2 + HEIGHT / 2;
-	if (game->xpm.end >= HEIGHT)
-		game->xpm.end = HEIGHT - 1;
-}
-
 unsigned int	get_color(t_game *game, t_tex *tex, int tex_y)
 {
 	char	*color;
@@ -105,11 +88,27 @@ void	set_texture(t_game *game, int x, int num)
 	}
 }
 
+int	set_screen(t_game *game, t_xpm *xpm, int i)
+{
+	if (xpm->side == 0)
+		xpm->wall_x = xpm->pos_y + xpm->perpwalldist * xpm->raydir_y;
+	else
+		xpm->wall_x = xpm->pos_x + xpm->perpwalldist * xpm->raydir_x;
+	xpm->wall_x -= floor(xpm->wall_x);
+	xpm->tex_x = (int)(xpm->wall_x * (double)IMG_W);
+	if ((xpm->side == 0 && xpm->raydir_x > 0)
+		|| (xpm->side == 1 && xpm->raydir_y < 0))
+		xpm->tex_x = IMG_W - xpm->tex_x - 1;
+	xpm->tex_y = 0;
+	xpm->tex_step = (xpm->height - HEIGHT) * xpm->tex_step / 2;
+	draw(game, xpm, i);
+	return (0);
+}
+
 void	draw_texture(t_game *game, int i, int map_y, void *texture)
 {
 	int	num;
 
-	num = find_tex_idx(game->xpm);
-	get_hit_pos(game);
-	set_texture(game, i, num);
+	num = find_tex_idx(&(game->xpm));
+	set_screen(game, &(game->xpm), i);
 }

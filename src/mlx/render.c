@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/24 17:16:48 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:02:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,23 @@ void	init_ray(t_game *game, int i)
 	game->xpm.deltadist_y = fabs(1 / game->xpm.raydir_y);
 	game->xpm.hit = 0;
 	set_side_dist(&(game->xpm));
+}
+
+void	get_hit_pos(t_game *game)
+{
+	if (game->xpm.side == 0)
+		game->xpm.perpwalldist = (game->xpm.map_x - game->xpm.pos_x
+				+ (1 - game->xpm.step_x) / 2) / game->xpm.raydir_x;
+	else
+		game->xpm.perpwalldist = (game->xpm.map_y - game->xpm.pos_y
+				+ (1 - game->xpm.step_y) / 2) / game->xpm.raydir_y;
+	game->xpm.height = (int)(HEIGHT / game->xpm.perpwalldist);
+	game->xpm.start = HEIGHT / 2 - game->xpm.height / 2;
+	if (game->xpm.start < 0)
+		game->xpm.start = 0;
+	game->xpm.end = game->xpm.height / 2 + HEIGHT / 2;
+	if (game->xpm.end >= HEIGHT)
+		game->xpm.end = HEIGHT - 1;
 }
 
 int	render_img(t_game *game)
