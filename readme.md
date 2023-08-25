@@ -47,4 +47,4 @@ plane도 방향에 따라 다 다르게 설정해야함
 
 ---
 
-render_img > put_pixel에서 에러.. 
+raycast.c 31 에러(dda)

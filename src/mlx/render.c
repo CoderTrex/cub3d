@@ -6,46 +6,29 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 12:19:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 12:35:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-// void	paint(t_game *game)
-// {
-// 	int	x;
-// 	int	y;
-
-// 	y = 0;
-// 	while (y < HEIGHT / 2)
-// 	{
-// 		x = 0;
-// 		while (x < WIDTH)
-// 		{
-// 			mlx_pixel_put(game->mlx, game->win, x, y, game->map.cell_color);
-// 			mlx_pixel_put(game->mlx, game->win, x, HEIGHT - y - 1, game->map.floor_color);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
-
 void	paint_floor_ceiling(t_game *game)
 {
 	int	x;
 	int	y;
+	int	mid;
 
 	y = 0;
-	while (y < HEIGHT / 2)
+	mid = HEIGHT / 2;
+	while (y < HEIGHT)
 	{
 		x = 0;
 		while (x < WIDTH)
 		{
-			put_pixel(game, x, y, game->map.cell_color);
-			put_pixel(game, x, HEIGHT - y - 1, game->map.floor_color);
-			// game->buf[y][x] = game->map.cell_color;
-			// game->buf[HEIGHT - y - 1][x] = game->map.floor_color;
+			if (y < mid)
+				put_pixel(game, x, y, game->map.cell_color);
+			else
+				put_pixel(game, x, y, game->map.floor_color);
 			x++;
 		}
 		y++;
