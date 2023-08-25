@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 11:34:54 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 12:04:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,40 @@ void	set_texture(t_game *game, int x, int num)
 	}
 }
 
-int	set_screen(t_game *game, t_xpm *xpm, int i)
+int	draw(t_game *game, t_xpm *xpm, t_tex *tex, int i)
+{
+	int				y;
+	char			*dst;
+	unsigned int	color;
+
+	y = xpm->start;
+	while (y <= xpm->end)
+	{
+		dst = tex->addr + ((int)(xpm->tex_y) % tex->height * tex->len
+				+ xpm->tex_x % tex->width * (tex->bpp / 8));
+		color = *(unsigned int *)dst;
+		put_pixel(game, i, y, color);
+		xpm.tex_y += xpm.tex_y_step;
+		y++;
+	}
+}
+
+int	set_screen(t_game *game, t_xpm *xpm, t_tex *tex, int i)
 {
 	if (xpm->side == 0)
-		xpm->wall_x = xpm->pos_y + xpm->perpwalldist * xpm->raydir_y;
+		xpm->wall = xpm->pos_y + xpm->perpwalldist * xpm->raydir_y;
 	else
-		xpm->wall_x = xpm->pos_x + xpm->perpwalldist * xpm->raydir_x;
-	xpm->wall_x -= floor(xpm->wall_x);
-	xpm->tex_x = (int)(xpm->wall_x * (double)IMG_W);
+		xpm->wall = xpm->pos_x + xpm->perpwalldist * xpm->raydir_x;
+	xpm->wall -= floor(xpm->wall);
+	xpm->tex_x = (int)(xpm->wall * (double)IMG_W);
 	if ((xpm->side == 0 && xpm->raydir_x > 0)
 		|| (xpm->side == 1 && xpm->raydir_y < 0))
 		xpm->tex_x = IMG_W - xpm->tex_x - 1;
 	xpm->tex_y = 0;
-	xpm->tex_step = (xpm->height - HEIGHT) * xpm->tex_step / 2;
-	draw(game, xpm, i);
+	xpm->tex_y_step = IMG_H / (double)xpm->height;
+	if (xpm->height > HEIGHT)
+		xpm->tex_y = (xpm->height - HEIGHT) / 2 * xpm->tex_y_step;
+	draw(game, xpm, tex, i);
 	return (0);
 }
 
@@ -110,5 +130,5 @@ void	draw_texture(t_game *game, int i, int map_y, void *texture)
 	int	num;
 
 	num = find_tex_idx(&(game->xpm));
-	set_screen(game, &(game->xpm), i);
+	set_screen(game, &(game->xpm), &(game->xpm.tex[num]) i);
 }
