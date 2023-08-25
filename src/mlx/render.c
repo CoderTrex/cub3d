@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 13:25:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:49:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,5 @@ int	render_img(t_game *game)
 		get_hit_pos(game);
 		draw_texture(game, i);
 	}
-	return (0);
-}
-
-int	print_img(t_game *game)
-{
-	mlx_put_image_to_window(game->mlx, game->win, game->xpm.img, 0, 0);
 	return (0);
 }

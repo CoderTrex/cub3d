@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 12:13:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:48:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,43 +48,6 @@ int	find_tex_idx(t_xpm *xpm)
 			return (NORTH);
 		else
 			return (SOUTH);
-	}
-}
-
-unsigned int	get_color(t_game *game, t_tex *tex, int tex_y)
-{
-	char	*color;
-
-	color = tex->addr + (tex_y * tex->len + game->xpm.tex_x * (tex->bpp / 8));
-	return (*(unsigned int *)color);
-}
-
-void	put_pixel(t_game *game, int x, int y, unsigned int color)
-{
-	char	*dst;
-
-	dst = game->xpm.addr + (y * game->xpm.len + x * (game->xpm.bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
-void	set_texture(t_game *game, int x, int num)
-{
-	int				i;
-	int				tex_y;
-	double			step;
-	double			tex_pos;
-	unsigned int	color;
-
-	step = 1.0 * IMG_H / game->xpm.height;
-	tex_pos = (game->xpm.start - HEIGHT / 2 + game->xpm.height / 2) * step;
-	i = game->xpm.start;
-	while (i < game->xpm.end)
-	{
-		tex_y = (int)tex_pos & (IMG_H - 1);
-		tex_pos += step;
-		color = get_color(game, &(game->xpm.tex[num]), tex_y);
-		put_pixel(game, x, i, color);
-		i++;
 	}
 }
 

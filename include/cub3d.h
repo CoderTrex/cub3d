@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 12:20:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:48:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void			draw_texture(t_game *game, int i);
 void			cal_dda(t_game *game);
 void			get_hit_pos(t_game *game);
 void			put_pixel(t_game *game, int x, int y, unsigned int color);
+unsigned int	get_color(t_game *game, t_tex *tex, int tex_y);
 
 int				print_img(t_game *game);
 int				render_img(t_game *game);

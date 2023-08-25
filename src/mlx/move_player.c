@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:24:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 13:33:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:49:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	rotate_player(t_game *game, double rot_sp)
 		- game->xpm.plane_y * sin(rot_sp);
 	game->xpm.plane_y = oldplane_x * sin(rot_sp)
 		+ game->xpm.plane_y * cos(rot_sp);
-	//set_buf(game);
-	//print_img(game);
+	render_img(game);
+	print_img(game);
 	return (0);
 }
 
