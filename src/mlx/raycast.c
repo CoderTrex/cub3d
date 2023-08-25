@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 12:04:25 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 12:13:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	set_texture(t_game *game, int x, int num)
 	{
 		tex_y = (int)tex_pos & (IMG_H - 1);
 		tex_pos += step;
-		color = get_color(game, game->xpm.tex[num], tex_y);
+		color = get_color(game, &(game->xpm.tex[num]), tex_y);
 		put_pixel(game, x, i, color);
 		i++;
 	}
@@ -101,9 +101,10 @@ int	draw(t_game *game, t_xpm *xpm, t_tex *tex, int i)
 				+ xpm->tex_x % tex->width * (tex->bpp / 8));
 		color = *(unsigned int *)dst;
 		put_pixel(game, i, y, color);
-		xpm.tex_y += xpm.tex_y_step;
+		xpm->tex_y += xpm->tex_y_step;
 		y++;
 	}
+	return (0);
 }
 
 int	set_screen(t_game *game, t_xpm *xpm, t_tex *tex, int i)
@@ -125,10 +126,10 @@ int	set_screen(t_game *game, t_xpm *xpm, t_tex *tex, int i)
 	return (0);
 }
 
-void	draw_texture(t_game *game, int i, int map_y, void *texture)
+void	draw_texture(t_game *game, int i)
 {
 	int	num;
 
 	num = find_tex_idx(&(game->xpm));
-	set_screen(game, &(game->xpm), &(game->xpm.tex[num]) i);
+	set_screen(game, &(game->xpm), &(game->xpm.tex[num]), i);
 }

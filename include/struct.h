@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/24 14:19:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 12:07:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,6 @@ typedef struct s_xpm
 	int		right;
 	int		rrot;
 	int		lrot;
-	double	move_sp;
-	double	rot_sp;
 }	t_xpm;
 
 typedef struct s_img

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:53:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/23 12:22:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 12:09:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ int	key_release(int key, t_game *game)
 		game->xpm.lrot = 0;
 	else if (key == RIGHT)
 		game->xpm.rrot = 0;
+	return (0);
 }

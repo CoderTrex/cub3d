@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 10:47:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 12:16:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	init_texture(t_game *game, t_tex *tex, int i)
 {
 	char	*path;
 
+	path = NULL;
 	if (i == NORTH)
 		path = game->img.north;
 	else if (i == SOUTH)
@@ -101,6 +102,7 @@ int	init_texture(t_game *game, t_tex *tex, int i)
 			&(tex->height));
 	if (!(tex->img))
 		return (ft_error("Fail to load texture\n"));
+	printf("%i, %s\n", i, path);
 	tex->addr = mlx_get_data_addr(tex->img, &(tex->bpp), &(tex->len),
 			&(tex->endian));
 	return (0);
@@ -119,7 +121,7 @@ int	init_game(t_game *game)
 	// 	return (1);
 	i = -1;
 	while (++i < 4)
-		if (init_texture(game, game->tex[i], i))
+		if (init_texture(game, &(game->xpm.tex[i]), i))
 			return (1);
 	// render_img(game); // del
 	// set_buf(game);
