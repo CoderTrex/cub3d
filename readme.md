@@ -39,7 +39,6 @@ Error 출력 시 Error\n 먼저 출력해야함
 ---
 
 move: dir_*, plane_* 확인
-plane도 방향에 따라 다 다르게 설정해야함
 
 ---
 
