@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 12:16:47 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/25 12:19:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,8 @@ int	init_game(t_game *game)
 	while (++i < 4)
 		if (init_texture(game, &(game->xpm.tex[i]), i))
 			return (1);
-	// render_img(game); // del
+	if (render_img(game) || print_img(game))
+		return (1);
 	// set_buf(game);
 	// print_img(game);
 	mlx_hook(game->win, KEY_EXIT, 0, end_game, game);
