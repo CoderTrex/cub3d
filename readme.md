@@ -44,3 +44,7 @@ texture buf에 씌우고 출력하기
 
 move: dir_*, plane_* 확인
 plane도 방향에 따라 다 다르게 설정해야함
+
+---
+
+render_img > put_pixel에서 에러.. 
