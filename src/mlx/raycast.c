@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/26 11:30:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/26 11:37:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	cal_dda(t_game *game)
 			game->xpm.map_y += game->xpm.step_y;
 			game->xpm.side = 1;
 		}
-		printf("%c\n", game->map.map[game->xpm.map_y][game->xpm.map_x]);
 		if (game->map.map[game->xpm.map_y][game->xpm.map_x] == '1')
 			game->xpm.hit = 1;
 	}
