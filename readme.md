@@ -49,4 +49,6 @@ wsad segfault 날 때도 있음..
 
 기묘하다...
 제대로 안찍힘
-raycasting 초기화가 좀 이상한가 봄
+raycasting 초기화가 좀 이상한가
+
+key_hook wsad 눌러도 안움직임 > pos 변화 없음.. 왜?
