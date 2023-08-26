@@ -230,12 +230,10 @@ int ft_parsing_master(char **argv, t_game *game_all)
 	{
 		while (count < game_all->map.map_len)
 		{
-            free(game_all->map.map[count]);
             free(game_all->map.map_cp[count]);
             free(game_all->map.map_cp2[count]);
 			count++;
 		}
-		free(game_all->map.map);
 		free(game_all->map.map_cp);
 		free(game_all->map.map_cp2);
 	}

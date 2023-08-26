@@ -44,3 +44,7 @@ move: dir_*, plane_* 확인
 
 raycast.c 31 에러(dda)
 wsad segfault 날 때도 있음..
+
+---
+
+엥 dda 문제 맞음.. 왜..?
