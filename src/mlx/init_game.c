@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 14:31:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/26 10:57:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int	init_texture(t_game *game, t_tex *tex, int i)
 			&(tex->height));
 	if (!(tex->img))
 		return (ft_error("Fail to load texture\n"));
-	printf("%i, %s\n", i, path);
 	tex->addr = mlx_get_data_addr(tex->img, &(tex->bpp), &(tex->len),
 			&(tex->endian));
 	return (0);
@@ -125,10 +124,10 @@ int	init_game(t_game *game)
 			return (1);
 	render_img(game);
 	print_img(game);
+	mlx_loop_hook(game->mlx, move, game);
 	mlx_hook(game->win, KEY_EXIT, 0, end_game, game);
 	mlx_hook(game->win, KEY_PRESS, 0, key_press, game);
 	mlx_hook(game->win, KEY_RELEASE, 0, key_release, game);
-	mlx_loop_hook(game->mlx, move, game);
 	mlx_loop(game->mlx);
 	ft_error("Fail to start game\n");
 	return (0);

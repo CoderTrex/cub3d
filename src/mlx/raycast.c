@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 13:48:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/26 11:08:40 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@ void	cal_dda(t_game *game)
 	{
 		if (game->xpm.sidedist_x < game->xpm.sidedist_y)
 		{
-			game->xpm.sidedist_x += game->xpm.deltadist_y;
+			game->xpm.sidedist_x += game->xpm.deltadist_x;
 			game->xpm.map_x += game->xpm.step_x;
 			game->xpm.side = 0;
 		}
 		else
 		{
-			game->xpm.sidedist_y += game->xpm.deltadist_x;
+			game->xpm.sidedist_y += game->xpm.deltadist_y;
 			game->xpm.map_y += game->xpm.step_y;
 			game->xpm.side = 1;
 		}
-		if (game->map.map[game->xpm.map_x][game->xpm.map_y] == '1')
+		printf("%c\n", game->map.map[game->xpm.map_y][game->xpm.map_x]);
+		if (game->map.map[game->xpm.map_y][game->xpm.map_x] == '1')
 			game->xpm.hit = 1;
 	}
 }

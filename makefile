@@ -46,6 +46,7 @@ SRCS =  src/main.c\
 		src/mlx/init_game.c\
 		src/mlx/exit_game.c\
 		src/mlx/key_hook.c\
+		src/mlx/mlx_utils.c\
 		src/mlx/move_player.c\
 		src/mlx/raycast.c\
 		src/mlx/render.c
