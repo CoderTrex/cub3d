@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/27 12:17:08 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/27 13:00:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,17 @@ int	render_img(t_game *game)
 		cal_dda(game);
 		get_hit_pos(game);
 		draw_texture(game, i);
+	}
+	for (int a = 0; a < game->map.height ; a++)
+	{
+		for (int b = 0; b < game->map.width; b++)
+		{
+			if (a == (int)game->xpm.pos_x && b == (int)game->xpm.pos_y)
+				printf("P");
+			else
+				printf("%c", game->map.map[a][b]);
+		}
+		printf("\n");
 	}
 	return (0);
 }
