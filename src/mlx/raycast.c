@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/26 11:37:03 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/27 11:41:35 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,16 @@ int	draw(t_game *game, t_xpm *xpm, t_tex *tex, int i)
 {
 	int				y;
 	char			*dst;
+	double			pos;
 	unsigned int	color;
 
 	y = xpm->start;
+	pos = (xpm->start - HEIGHT / 2 + xpm->height / 2) * xpm->tex_y_step;
 	while (y <= xpm->end)
 	{
-		dst = tex->addr + ((int)(xpm->tex_y) % tex->height * tex->len
-				+ xpm->tex_x % tex->width * (tex->bpp / 8));
+		xpm->tex_y = (int)pos & (tex->height - 1);
+		pos += xpm->tex_y_step;
+		dst = tex->addr + (int)(xpm->tex_y * tex->len + xpm->tex_x * (tex->bpp / 8));
 		color = *(unsigned int *)dst;
 		put_pixel(game, i, y, color);
 		xpm->tex_y += xpm->tex_y_step;
@@ -78,8 +81,9 @@ int	set_screen(t_game *game, t_xpm *xpm, t_tex *tex, int i)
 		xpm->wall = xpm->pos_x + xpm->perpwalldist * xpm->raydir_x;
 	xpm->wall -= floor(xpm->wall);
 	xpm->tex_x = (int)(xpm->wall * (double)IMG_W);
-	if ((xpm->side == 0 && xpm->raydir_x > 0)
-		|| (xpm->side == 1 && xpm->raydir_y < 0))
+	if (xpm->side == 0 && xpm->raydir_x < 0)
+		xpm->tex_x = IMG_W - xpm->tex_x - 1;
+	if (xpm->side == 1 && xpm->raydir_y > 0)
 		xpm->tex_x = IMG_W - xpm->tex_x - 1;
 	xpm->tex_y = 0;
 	xpm->tex_y_step = IMG_H / (double)xpm->height;

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/27 10:52:34 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/27 11:43:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,9 @@ void	init_ray(t_game *game, int i)
 void	get_hit_pos(t_game *game)
 {
 	if (game->xpm.side == 0)
-		game->xpm.perpwalldist = (game->xpm.map_x - game->xpm.pos_x
-				+ (1 - game->xpm.step_x) / 2) / game->xpm.raydir_x;
+		game->xpm.perpwalldist = (game->xpm.sidedist_x - game->xpm.deltadist_x);
 	else
-		game->xpm.perpwalldist = (game->xpm.map_y - game->xpm.pos_y
-				+ (1 - game->xpm.step_y) / 2) / game->xpm.raydir_y;
+		game->xpm.perpwalldist = (game->xpm.sidedist_y - game->xpm.deltadist_y);
 	game->xpm.height = (int)(HEIGHT / game->xpm.perpwalldist);
 	game->xpm.start = HEIGHT / 2 - game->xpm.height / 2;
 	if (game->xpm.start < 0)
