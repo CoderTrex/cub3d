@@ -52,3 +52,7 @@ wsad segfault 날 때도 있음..
 raycasting 초기화가 좀 이상한가
 
 key_hook wsad 눌러도 안움직임 > pos 변화 없음.. 왜?
+
+---
+
+레이캐스팅, key_hook 잘 돼는데 계산이 이상한가 맵을 잘못 읽는 듯
