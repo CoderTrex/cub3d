@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:53:57 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 12:09:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/27 10:54:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	key_press(int key, t_game *game)
 		game->xpm.lrot = 1;
 	else if (key == RIGHT)
 		game->xpm.rrot = 1;
+	printf("key: %d\n", key);
 	return (0);
 }
 
