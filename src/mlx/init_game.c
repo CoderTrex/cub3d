@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/27 10:58:49 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/27 12:32:36 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	init_data(t_game *game)
 	game->xpm.lrot = 0;
 	game->xpm.move_sp = 0.51;
 	game->xpm.rot_sp = 0.1;
+	game->map.map[game->map.px][game->map.py] = '0';
 	return (0);
 }
 
