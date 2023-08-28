@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/28 16:08:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:12:31 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	render_img(t_game *game)
 	{
 		for (int b = 0; b < game->map.width; b++)
 		{
-			if (b == (int)game->xpm.pos_x && a == (int)game->xpm.pos_y)
+			if (a == (int)game->xpm.pos_x && b == (int)game->xpm.pos_y)
 				printf("P");
 			else
 				printf("%c", game->map.map[a][b]);
