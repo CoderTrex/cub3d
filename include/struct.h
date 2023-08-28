@@ -6,15 +6,15 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/26 11:53:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:00:22 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define WIDTH 1280
-# define HEIGHT 960
+# define WIDTH 640
+# define HEIGHT 480
 # define IMG_W 64
 # define IMG_H 64
 
