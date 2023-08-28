@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/28 15:53:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:08:04 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	init_ray(t_game *game, int i)
 	game->xpm.camera_x = 2 * i / (double)WIDTH - 1;
 	game->xpm.raydir_x = game->xpm.dir_x + game->xpm.plane_x * game->xpm.camera_x;
 	game->xpm.raydir_y = game->xpm.dir_y + game->xpm.plane_y * game->xpm.camera_x;
-	game->xpm.map_x = (int)game->xpm.pos_y;
-	game->xpm.map_y = (int)game->xpm.pos_x;
+	game->xpm.map_x = (int)game->xpm.pos_x;
+	game->xpm.map_y = (int)game->xpm.pos_y;
 	game->xpm.deltadist_x = fabs(1 / game->xpm.raydir_x);
 	game->xpm.deltadist_y = fabs(1 / game->xpm.raydir_y);
 	game->xpm.hit = 0;

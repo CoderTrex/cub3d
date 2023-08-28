@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:24:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/28 15:49:20 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:08:37 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	move_player(t_game *game, double x, double y)
 
 	next_x = (int)(game->xpm.pos_x + x * game->xpm.move_sp);
 	next_y = (int)(game->xpm.pos_y + y * game->xpm.move_sp);
-	if (game->map.map[(int)(game->xpm.pos_y)][next_x] == '0')
+	if (game->map.map[next_x][(int)(game->xpm.pos_y)] == '0')
 	{
 		printf("1: %d %d\n", next_x, (int)game->xpm.pos_y);
 		game->xpm.pos_x += x * game->xpm.move_sp;	// (game->xpm.move_sp - 0.01?);
 		print_img(game);
 		render_img(game);
 	}
-	if (game->map.map[next_y][(int)(game->xpm.pos_x)] == '0')
+	if (game->map.map[(int)(game->xpm.pos_x)][next_y] == '0')
 	{
 		printf("2: %d %d\n", (int)game->xpm.pos_x, next_y);
 		game->xpm.pos_y += y * game->xpm.move_sp;	// (game->xpm.move_sp - 0.01?);
