@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/28 14:21:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:06:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ int	init_texture(t_game *game, t_tex *tex, int i)
 			&(tex->height));
 	if (!(tex->img))
 		return (ft_error("Fail to load texture\n"));
-	printf("%d: img: %p\n", i, tex->img);
 	tex->addr = mlx_get_data_addr(tex->img, &(tex->bpp), &(tex->len),
 			&(tex->endian));
 	return (0);
