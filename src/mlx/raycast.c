@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/28 16:14:04 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:22:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	find_tex_idx(t_xpm *xpm)
 	else
 	{
 		if (xpm->raydir_y < 0)
-			return (EAST);
-		else
 			return (WEST);
+		else
+			return (EAST);
 	}
 }
 
