@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:09:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:39:14 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:56:38 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,13 @@ int	check_row2(char *str)
 		if (str[i] != ' ')
 		{
 			if (str[i] != '1')
-			{
-				printf("%s\n", str);
 				return (1);
-			}
 			break ;
 		}
 		i++;
 	}
 	if (str[len - 1] != '1')
-	{
-		printf("%s\n", str);
 		return (1);
-	}
 	return (0);
 }
 

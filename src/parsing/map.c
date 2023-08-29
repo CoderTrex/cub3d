@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:46:11 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:54:33 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,7 @@ void	remake_map(t_map *map)
 		width_ori_len = ft_strlen(map->map[i]);
 		while (++j < map->width)
 		{
-			if (j >= width_ori_len)
-				newmap[i][j] = '3';
-			else if (map->map[i][j] == '0' || map->map[i][j] == '1'
-				|| map->map[i][j] == 'N' || map->map[i][j] == 'S'
-				|| map->map[i][j] == 'W' || map->map[i][j] == 'E')
+			if (ft_strchr("01NEWS", map->map[i][j]))
 					newmap[i][j] = map->map[i][j];
 			else
 				newmap[i][j] = '3';
@@ -120,25 +116,16 @@ int	check_map(t_map *info)
 		if (i == 0 || i == info->map_len - 1)
 		{
 			if (check_row(info->map[i]))
-			{
-				printf("%s\n", info->map[i]);
-				return (1);
-			}
+				return (ft_error("Map isn't surrounded by wall\n"));
 		}
 		else
 		{
 			if (check_row2(info->map[i]))
-			{
-				ft_error("Map isn't surrounded by wall\n");
-				return (1);
-			}
+				return (ft_error("Map isn't surrounded by wall\n"));
 		}
 	}
 	if (check_row3(info))
-	{
-		ft_error("Map isn't surrounded by wall\n");
-		return (1);
-	}
+		return (ft_error("Map isn't surrounded by wall\n"));
 	return (0);
 }
 
@@ -164,6 +151,6 @@ int	parsing_map(t_map *info, char *full_path)
 	if (check_spawn(info) != 1)
 		return (ft_error("Check the number of player\n"));
 	if (check_map(info))
-		return (ft_error("Map is not surrounded wall\n"));
+		return (1);
 	return (0);
 }
