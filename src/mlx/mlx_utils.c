@@ -6,11 +6,60 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:48:31 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 13:50:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:11:54 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	set_plane(t_game *game)
+{
+	if (game->map.pos == 'W')
+	{
+		game->xpm.plane_x = 0.66;
+		game->xpm.plane_y = 0.0;
+	}
+	else if (game->map.pos == 'E')
+	{
+		game->xpm.plane_x = -0.66;
+		game->xpm.plane_y = 0.0;
+	}
+	else if (game->map.pos == 'N')
+	{
+		game->xpm.plane_x = 0.0;
+		game->xpm.plane_y = -0.66;
+	}
+	else if (game->map.pos == 'S')
+	{
+		game->xpm.plane_x = 0.0;
+		game->xpm.plane_y = 0.66;
+	}
+}
+
+void	set_dir(t_game *game)
+{
+	if (game->map.pos == 'W')
+	{
+		game->xpm.dir_x = 0.0;
+		game->xpm.dir_y = -1.0;
+	}
+	else if (game->map.pos == 'E')
+	{
+		game->xpm.dir_x = 0.0;
+		game->xpm.dir_y = 1.0;
+	}
+	else if (game->map.pos == 'N')
+	{
+		game->xpm.dir_x = -1.0;
+		game->xpm.dir_y = 0.0;
+	}
+	else if (game->map.pos == 'S')
+	{
+		game->xpm.dir_x = 1.0;
+		game->xpm.dir_y = 0.0;
+	}
+	set_plane(game);
+}
 
 unsigned int	get_color(t_game *game, t_tex *tex, int tex_y)
 {

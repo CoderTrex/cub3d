@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/25 13:48:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:18:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int				parsing_map(t_map *info, char *full_path);
 int				find_map(char *full_file, t_map *info);
 
 int				init_game(t_game *game);
+void			set_dir(t_game *game);
 
 void			draw_texture(t_game *game, int i);
 void			cal_dda(t_game *game);
@@ -59,12 +60,13 @@ void			put_pixel(t_game *game, int x, int y, unsigned int color);
 unsigned int	get_color(t_game *game, t_tex *tex, int tex_y);
 
 int				print_img(t_game *game);
-int				render_img(t_game *game);
+void			render_img(t_game *game);
 
 int				key_press(int key, t_game *game);
 int				key_release(int key, t_game *game);
 
 int				move(t_game *game);
+void			print_map_with_player(t_game *game);
 
 int				end_game(t_game *game);
 

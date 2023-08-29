@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:52:58 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/28 16:31:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:18:46 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ void	set_side_dist(t_xpm *xpm)
 void	init_ray(t_game *game, int i)
 {
 	game->xpm.camera_x = 2 * i / (double)WIDTH - 1;
-	game->xpm.raydir_x = game->xpm.dir_x + game->xpm.plane_x * game->xpm.camera_x;
-	game->xpm.raydir_y = game->xpm.dir_y + game->xpm.plane_y * game->xpm.camera_x;
+	game->xpm.raydir_x
+		= game->xpm.dir_x + game->xpm.plane_x * game->xpm.camera_x;
+	game->xpm.raydir_y
+		= game->xpm.dir_y + game->xpm.plane_y * game->xpm.camera_x;
 	game->xpm.map_x = (int)game->xpm.pos_x;
 	game->xpm.map_y = (int)game->xpm.pos_y;
 	game->xpm.deltadist_x = fabs(1 / game->xpm.raydir_x);
@@ -87,7 +89,7 @@ void	get_hit_pos(t_game *game)
 		game->xpm.end = HEIGHT - 1;
 }
 
-int	render_img(t_game *game)
+void	render_img(t_game *game)
 {
 	int	i;
 
@@ -100,16 +102,5 @@ int	render_img(t_game *game)
 		get_hit_pos(game);
 		draw_texture(game, i);
 	}
-	for (int a = 0; a < game->map.height ; a++)
-	{
-		for (int b = 0; b < game->map.width; b++)
-		{
-			if (a == (int)game->xpm.pos_x && b == (int)game->xpm.pos_y)
-				printf("P");
-			else
-				printf("%c", game->map.map[a][b]);
-		}
-		printf("\n");
-	}
-	return (0);
+	print_map_with_player(game);
 }

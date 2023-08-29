@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 10:57:59 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:13:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int	draw(t_game *game, t_xpm *xpm, t_tex *tex, int i)
 	{
 		xpm->tex_y = (int)pos & (tex->height - 1);
 		pos += xpm->tex_y_step;
-		dst = tex->addr + (int)(xpm->tex_y * tex->len + xpm->tex_x * (tex->bpp / 8));
+		dst = tex->addr
+			+ (int)(xpm->tex_y * tex->len + xpm->tex_x * (tex->bpp / 8));
 		color = *(unsigned int *)dst;
 		put_pixel(game, WIDTH - i, y, color);
 		xpm->tex_y += xpm->tex_y_step;

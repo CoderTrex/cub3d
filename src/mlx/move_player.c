@@ -6,11 +6,32 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:24:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/28 16:34:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:19:06 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	print_map_with_player(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < game->map.height)
+	{
+		j = -1;
+		while (++j < game->map.width)
+		{
+			if (i == (int)game->xpm.pos_x && j == (int)game->xpm.pos_y)
+				printf("P");
+			else
+				printf("%c", game->map.map[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
 
 int	move_player(t_game *game, double x, double y)
 {
@@ -21,15 +42,13 @@ int	move_player(t_game *game, double x, double y)
 	next_y = (int)(game->xpm.pos_y + y * game->xpm.move_sp);
 	if (game->map.map[next_x][(int)(game->xpm.pos_y)] == '0')
 	{
-		printf("1: %d %d\n", next_x, (int)game->xpm.pos_y);
-		game->xpm.pos_x += x * game->xpm.move_sp;	// (game->xpm.move_sp - 0.01?);
+		game->xpm.pos_x += x * game->xpm.move_sp;
 		print_img(game);
 		render_img(game);
 	}
 	if (game->map.map[(int)(game->xpm.pos_x)][next_y] == '0')
 	{
-		printf("2: %d %d\n", (int)game->xpm.pos_x, next_y);
-		game->xpm.pos_y += y * game->xpm.move_sp;	// (game->xpm.move_sp - 0.01?);
+		game->xpm.pos_y += y * game->xpm.move_sp;
 		render_img(game);
 		print_img(game);
 	}

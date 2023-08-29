@@ -6,43 +6,11 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 10:52:16 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:19:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	set_dir(t_game *game)
-{
-	if (game->map.pos == 'W')
-	{
-		game->xpm.dir_x = 0.0;
-		game->xpm.dir_y = -1.0;
-		game->xpm.plane_x = 0.66;
-		game->xpm.plane_y = 0.0;
-	}
-	else if (game->map.pos == 'E')
-	{
-		game->xpm.dir_x = 0.0;
-		game->xpm.dir_y = 1.0;
-		game->xpm.plane_x = -0.66;
-		game->xpm.plane_y = 0.0;
-	}
-	else if (game->map.pos == 'N')
-	{
-		game->xpm.dir_x = -1.0;
-		game->xpm.dir_y = 0.0;
-		game->xpm.plane_x = 0.0;
-		game->xpm.plane_y = -0.66;
-	}
-	else if (game->map.pos == 'S')
-	{
-		game->xpm.dir_x = 1.0;
-		game->xpm.dir_y = 0.0;
-		game->xpm.plane_x = 0.0;
-		game->xpm.plane_y = 0.66;
-	}
-}
 
 int	init_data(t_game *game)
 {
@@ -62,7 +30,7 @@ int	init_data(t_game *game)
 	game->xpm.right = 0;
 	game->xpm.rrot = 0;
 	game->xpm.lrot = 0;
-	game->xpm.move_sp = 0.11;
+	game->xpm.move_sp = 0.31;
 	game->xpm.rot_sp = 0.1;
 	game->map.map[game->map.px][game->map.py] = '0';
 	return (0);
