@@ -1,5 +1,16 @@
-// https://m.blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=xxxstarxxx&logNo=221826768233&categoryNo=49&proxyReferer=
-// https://boycoding.tistory.com/164
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/29 14:28:55 by minjinki          #+#    #+#             */
+/*   Updated: 2023/08/29 14:29:41 by minjinki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/cub3d.h"
 
 int	make_rgb(int r, int g, int b)
 {
@@ -8,21 +19,21 @@ int	make_rgb(int r, int g, int b)
 
 int	get_r(int rgb)
 {
-    rgb = rgb & 0x00ff0000;  // red 비트에서 &(논리곱)
-    rgb = rgb >> 16;
-    return rgb;
+	rgb = rgb & 0x00ff0000;
+	rgb = rgb >> 16;
+	return (rgb);
 }
 
 int	get_g(int rgb)
 {
-    rgb = rgb & 0x0000ff00;  // green 비트에서 &(논리곱)
-    rgb = rgb >> 8;
-    return rgb;
+	rgb = rgb & 0x0000ff00;
+	rgb = rgb >> 8;
+	return (rgb);
 }
 
 int	get_b(int rgb)
 {
-    rgb = rgb & 0x000000ff;  // blue 비트에서& (논리곱)
-    rgb = rgb >> 0;
-    return rgb;
+	rgb = rgb & 0x000000ff;
+	rgb = rgb >> 0;
+	return (rgb);
 }
