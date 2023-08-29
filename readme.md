@@ -33,3 +33,4 @@ map.c line 27: ft_strchr(check[i], '1') error<br />
 ---
 
 map.c 맨 첫번째 함수 find_map() ? 함수 줄 수 줄여야 함
+에러 처리 잘 되는지, 릭은 안 나는지 체크
