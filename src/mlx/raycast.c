@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:19:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/28 16:43:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 10:57:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ int	set_screen(t_game *game, t_xpm *xpm, t_tex *tex, int i)
 		xpm->wall = xpm->pos_x + xpm->perpwalldist * xpm->raydir_x;
 	xpm->wall -= floor(xpm->wall);
 	xpm->tex_x = (int)(xpm->wall * (double)IMG_W);
-	if (xpm->side == 0 && xpm->raydir_x < 0)
+	if (xpm->side == 0 && xpm->raydir_x > 0)
 		xpm->tex_x = IMG_W - xpm->tex_x - 1;
-	if (xpm->side == 1 && xpm->raydir_y > 0)
+	if (xpm->side == 1 && xpm->raydir_y < 0)
 		xpm->tex_x = IMG_W - xpm->tex_x - 1;
 	xpm->tex_y = 0;
 	xpm->tex_y_step = IMG_H / (double)xpm->height;
