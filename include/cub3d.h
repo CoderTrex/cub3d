@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:01:23 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:16:27 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 
 void			ft_strcpy(char *dst, const char *src);
 int				read_till_end(int fd, char **line);
-// static char	    *ft_join(char *s1, char *s2);
 int				parsing_all(int fd, t_game *game_all, t_map *map_all);
 int				init_input(t_game *game_all, char *map_path);
 int				ft_parsing_master(char **argv, t_game *game_all);
@@ -49,6 +48,11 @@ void			free_all(t_game *game);
 
 int				parsing_map(t_map *info, char *full_path);
 int				find_map(char *full_file, t_map *info);
+void			remake_map(t_map *map);
+int				check_spawn(t_map *map);
+int				check_row(char *str);
+int				check_row2(char *str);
+int				check_row3(t_map *map);
 
 int				init_game(t_game *game);
 void			set_dir(t_game *game);

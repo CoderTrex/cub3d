@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:08:15 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:14:58 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,108 +54,6 @@ int	find_map(char *full_file, t_map *info)
 	}
 	free_2d_array(check);
 	return (-1);
-}
-
-int	check_spawn(t_map *map)
-{
-	int	i;
-	int	j;
-	int	character;
-
-	i = -1;
-	j = -1;
-	character = 0;
-	while (map->map_len > ++i)
-	{
-		if (ft_strchr(map->map[i], 'N') || ft_strchr(map->map[i], 'W')
-			|| ft_strchr(map->map[i], 'E') || ft_strchr(map->map[i], 'S'))
-		{
-			character++;
-			map->px = i;
-			while (map->map[i][++j])
-			{
-				if (map->map[i][j] == 'N' || map->map[i][j] == 'W'
-				|| map->map[i][j] == 'E' || map->map[i][j] == 'S')
-				{
-					map->py = j;
-					map->pos = map->map[i][j];
-				}
-			}
-		}
-	}
-	if (character == 1)
-		return (0);
-	return (1);
-}
-
-int	check_row(char *str)
-{
-	int	i;
-	int	len;
-
-	i = -1;
-	len = ft_strlen(str);
-	while (++i < len)
-	{
-		if (str[i] != ' ' && str[i] != '1')
-			return (1);
-	}
-	return (0);
-}
-
-int	check_row2(char *str)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = ft_strlen(str);
-	while (i < len)
-	{
-		if (str[i] != ' ')
-		{
-			if (str[i] != '1')
-			{
-				printf("%s\n", str);
-				return (1);
-			}
-			break ;
-		}
-		i++;
-	}
-	if (str[len - 1] != '1')
-	{
-		printf("%s\n", str);
-		return (1);
-	}
-	return (0);
-}
-
-int	check_four_forward(t_map *info, int y, int x)
-{
-	if (y < 0 || x < 0 || y == info->height || x == info->width)
-	{
-		printf("test: ERROR four forward %c\n", info->map_cp2[y][x]);
-		return (1);
-	}
-	if (info->map_cp2[y + 1][x] == '3' || info->map_cp2[y][x + 1] == '3'
-		|| info->map_cp2[y - 1][x] == '3' || info->map_cp2[y][x - 1] == '3'
-		|| info->map_cp2[y][x] == '3')
-	{
-		printf("test: ERROR four forward %c, and position: %d, %d\n",
-			info->map_cp2[y][x], x, y);
-		return (1);
-	}
-	info->map_cp2[y][x] = '1';
-	if (info->map_cp2[y - 1][x] == '0')
-		return (check_four_forward(info, y - 1, x));
-	if (info->map_cp2[y + 1][x] == '0')
-		return (check_four_forward(info, y + 1, x));
-	if (info->map_cp2[y][x + 1] == '0')
-		return (check_four_forward(info, y, x + 1));
-	if (info->map_cp2[y][x - 1] == '0')
-		return (check_four_forward(info, y, x - 1));
-	return (0);
 }
 
 // 원본 배열을 복사하여 새로운 2차원 배열 생성
@@ -210,33 +108,6 @@ void	remake_map(t_map *map)
 	map->map_cp2 = copy_array(newmap, map->height, map->width);
 	free_2d_array(newmap);
 }
-
-int	check_row3(t_map *map)
-{
-	int	i;
-	int	j;
-	int	height;
-	int	width;
-
-	remake_map(map);
-	i = -1;
-	height = map->height;
-	while (++i < height)
-	{
-		j = -1;
-		width = ft_strlen(map->map[i]);
-		while (++j < width)
-		{
-			if (map->map[i][j] == '0')
-				check_four_forward(map, i, j);
-		}
-	}
-	return (0);
-}
-// 조건
-// 1. 사방이 전부 1로 둘러싸여야한다.
-// 2번 조건 다른 게 있을까? 없는 것 같은디...
-// 주변이 1로 둘러쌓여 잇으면 되는 건데 그 왜 조건 있나?
 
 int	check_map(t_map *info)
 {

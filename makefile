@@ -43,6 +43,7 @@ SRCS =  src/main.c\
 		src/parsing/color.c\
 		src/parsing/utils.c\
 		src/parsing/map.c\
+		src/parsing/check_map.c\
 		src/mlx/init_game.c\
 		src/mlx/exit_game.c\
 		src/mlx/key_hook.c\
