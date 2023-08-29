@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:52:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:06:53 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:18:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,6 @@
 // 맵 전체
 // 캐릭터
 // 텍스쳐
-
-char	*create_line(char *str, char *needle)
-{
-	char	*line;
-	char	*trimmedline;
-	int		index;
-
-	line = ft_strstr(str, needle);
-	if (line)
-	{
-		line += ft_strlen(needle);
-		while (*line == ' ')
-			line++;
-		index = get_findex(line, '\n');
-		line = ft_substr(line, 0, index);
-		trimmedline = ft_strtrim(line, " ");
-		free(line);
-		return (trimmedline);
-	}
-	return (NULL);
-}
 
 int	parsing_color(char *full_file, unsigned int *color, char *pattern)
 {
@@ -57,34 +36,6 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
 	free(line);
 	*color = make_rgb(color_s.R, color_s.G, color_s.B);
 	return (0);
-}
-
-char	*remove_spaces(char *input)
-{
-	int		i;
-	int		j;
-	char	*output;
-
-	i = -1;
-	j = 0;
-	while (input[++i])
-	{
-		if (input[i] != ' ' && input[i] > 0)
-			j++;
-	}
-	output = malloc(sizeof(char *) * j);
-	i = -1;
-	j = 0;
-	while (input[++i])
-	{
-		if (input[i] != ' ' && input[i] > 0)
-		{
-			output[j] = input[i];
-			j++;
-		}
-	}
-	output[j] = '\0';
-	return (output);
 }
 
 int	parsing_texture(t_map *map, t_img *img)

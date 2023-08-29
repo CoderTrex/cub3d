@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:16:27 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:19:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int				ft_isdigit_string(char *str);
 int				check_rgb(char **split, t_color *color_s);
 int				get_findex(char *str, char c);
 char			*ft_strstr(const char *text, const char *pattern);
+char			*create_line(char *str, char *needle);
+char			*remove_spaces(char *input);
 void			free_all(t_game *game);
 
 int				parsing_map(t_map *info, char *full_path);

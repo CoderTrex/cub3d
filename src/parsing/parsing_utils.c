@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:52:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 14:52:40 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:18:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,53 @@ int	read_till_end(int fd, char **line)
 		buf[ret] = '\0';
 	}
 	return (0);
+}
+
+char	*create_line(char *str, char *needle)
+{
+	char	*line;
+	char	*trimmedline;
+	int		index;
+
+	line = ft_strstr(str, needle);
+	if (line)
+	{
+		line += ft_strlen(needle);
+		while (*line == ' ')
+			line++;
+		index = get_findex(line, '\n');
+		line = ft_substr(line, 0, index);
+		trimmedline = ft_strtrim(line, " ");
+		free(line);
+		return (trimmedline);
+	}
+	return (NULL);
+}
+
+char	*remove_spaces(char *input)
+{
+	int		i;
+	int		j;
+	char	*output;
+
+	i = -1;
+	j = 0;
+	while (input[++i])
+	{
+		if (input[i] != ' ' && input[i] > 0)
+			j++;
+	}
+	output = malloc(sizeof(char *) * j);
+	i = -1;
+	j = 0;
+	while (input[++i])
+	{
+		if (input[i] != ' ' && input[i] > 0)
+		{
+			output[j] = input[i];
+			j++;
+		}
+	}
+	output[j] = '\0';
+	return (output);
 }
