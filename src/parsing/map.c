@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:14:58 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:22:41 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	find_map(char *full_file, t_map *info)
 			|| ft_strstr(check[i], "SO") || ft_strstr(check[i], "WE")
 			|| ft_strstr(check[i], "F ") || ft_strstr(check[i], "C "))
 				number++;
-		if (number == 6 && (ft_strchr(check[i], '1') && !ft_strchr(check[i], 'F') && !ft_strchr(check[i], 'C')))
+		if (number == 6 && (ft_strchr(check[i], '1')
+				&& !ft_strchr(check[i], 'F') && !ft_strchr(check[i], 'C')))
 		{
 			info->map = (char **)malloc(sizeof(char *) * size + 1);
 			info->map_cp = (char **)malloc(sizeof(char *) * size + 1);

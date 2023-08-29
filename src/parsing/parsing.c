@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:52:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:18:01 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:23:10 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	parsing_all(int fd, t_game *game_all, t_map *map_all)
 		return (ft_error(""));
 	if (parsing_color(map_all->full_path, &map_all->floor_color, "F ")
 		|| parsing_color(map_all->full_path, &map_all->cell_color, "C ")
-		|| parsing_map(map_all, map_all->full_path) // 문제점 2차원 배열을 null일 때까지 접근하면 segmentfault가 뜨는데 왜 그런지 모르겠음
+		|| parsing_map(map_all, map_all->full_path)
 		|| parsing_texture(map_all, &game_all->img))
 	{
 		printf("map format is wrong\n");
