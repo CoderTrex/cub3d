@@ -6,23 +6,27 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 14:48:46 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:51:50 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int find_map(char *full_file, t_map *info)
+int	find_map(char *full_file, t_map *info)
 {
 	char	**check;
-	int		number = 0;
-	int		total  = -1;
-	int		size = 0;
-	int		i = -1;
+	int		number;
+	int		i;
+	int		j;
+	int		size;
+	int		total;
 
 	check = ft_split(full_file, '\n');
+	total = -1;
 	while (check[++total])
 		;
+	i = -1;
+	number = 0;
 	size = total - 5;
 	while (check[++i])
 	{
@@ -34,7 +38,7 @@ int find_map(char *full_file, t_map *info)
 		{
 			info->map = (char **)malloc(sizeof(char *) * size + 1);
 			info->map_cp = (char **)malloc(sizeof(char *) * size + 1);
-			int j = 0;
+			j = 0;
 			while (size - 1 > j)
 			{
 				info->map[j] = ft_strdup(check[i]);
