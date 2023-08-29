@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:24:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 11:19:06 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:39:43 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ int	move(t_game *game)
 	if (game->xpm.backward == 1)
 		move_player(game, -game->xpm.dir_x, -game->xpm.dir_y);
 	if (game->xpm.left == 1)
-		move_player(game, -game->xpm.plane_x, game->xpm.plane_y);
+		move_player(game, game->xpm.plane_x, game->xpm.plane_y);
 	if (game->xpm.right == 1)
-		move_player(game, game->xpm.plane_x, -game->xpm.plane_y);
+		move_player(game, -game->xpm.plane_x, -game->xpm.plane_y);
 	if (game->xpm.lrot == 1)
 		rotate_player(game, game->xpm.rot_sp);
 	if (game->xpm.rrot == 1)
