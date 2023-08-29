@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:52:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:48:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 16:16:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
 	}
 	free_2d_array(split);
 	free(line);
-	*color = make_rgb(color_s.R, color_s.G, color_s.B);
+	*color = make_rgb(color_s.r, color_s.g, color_s.b);
 	return (0);
 }
 
