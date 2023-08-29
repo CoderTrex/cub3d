@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:54:33 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 16:13:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ int	find_map(char *full_file, t_map *info)
 	int		i;
 	int		j;
 	int		size;
-	int		total;
 
 	check = ft_split(full_file, '\n');
-	total = -1;
-	while (check[++total])
+	size = -1;
+	while (check[++size])
 		;
 	i = -1;
 	number = 0;
-	size = total - 5;
+	size -= 5;
 	while (check[++i])
 	{
 		if (ft_strstr(check[i], "NO") || ft_strstr(check[i], "EA")
@@ -37,17 +36,14 @@ int	find_map(char *full_file, t_map *info)
 		if (number == 6 && (ft_strchr(check[i], '1')
 				&& !ft_strchr(check[i], 'F') && !ft_strchr(check[i], 'C')))
 		{
-			info->map = (char **)malloc(sizeof(char *) * size + 1);
-			info->map_cp = (char **)malloc(sizeof(char *) * size + 1);
+			info->map = (char **)ft_calloc(size + 1, sizeof(char *));
+			info->map_cp = (char **)ft_calloc(size + 1, sizeof(char *));
 			j = 0;
 			while (size - 1 > j)
 			{
 				info->map[j] = ft_strdup(check[i]);
-				info->map_cp[j] = ft_strdup(check[i++]);
-				j++;
+				info->map_cp[j++] = ft_strdup(check[i++]);
 			}
-			info->map[j] = NULL;
-			info->map_cp[j] = NULL;
 			info->map_len = j;
 			free_2d_array(check);
 			return (i);
