@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:00:18 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:08:15 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,13 +159,13 @@ int	check_four_forward(t_map *info, int y, int x)
 }
 
 // 원본 배열을 복사하여 새로운 2차원 배열 생성
-char**	copy_array(char** src, int rows, int cols) 
+char	**copy_array(char **src, int rows, int cols)
 {
 	int		i;
 	int		j;
-	char**	dest;
+	char	**dest;
 
-	dest = (char**)malloc(rows * sizeof(char *) + 1);
+	dest = (char **)malloc(rows * sizeof(char *) + 1);
 	i = -1;
 	while (++i < rows)
 	{
@@ -240,7 +240,7 @@ int	check_row3(t_map *map)
 
 int	check_map(t_map *info)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < info->map_len)

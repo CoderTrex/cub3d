@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:52:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:00:05 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:06:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*remove_spaces(char *input)
 	int		i;
 	int		j;
 	char	*output;
- 
+
 	i = -1;
 	j = 0;
 	while (input[++i])
