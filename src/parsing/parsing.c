@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:52:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 14:58:57 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:00:05 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	parsing_color(char *full_file, unsigned int *color, char *pattern)
 	split = ft_split(line, ',');
 	if (check_rgb(split, &color_s))
 	{
-		Free2DArray(split);
+		free_2d_array(split);
 		free(line);
 		return (ft_error("\nRGB: ERROR\n"));
 	}
-	Free2DArray(split);
+	free_2d_array(split);
 	free(line);
 	*color = make_rgb(color_s.R, color_s.G, color_s.B);
 	return (0);

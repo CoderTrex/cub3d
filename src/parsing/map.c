@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 14:51:50 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:00:18 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ int	find_map(char *full_file, t_map *info)
 			info->map[j] = NULL;
 			info->map_cp[j] = NULL;
 			info->map_len = j;
-			Free2DArray(check);
+			free_2d_array(check);
 			return (i);
 		}
 	}
-	Free2DArray(check);
+	free_2d_array(check);
 	return (-1);
 }
 
@@ -208,7 +208,7 @@ void	remake_map(t_map *map)
 	}
 	newmap[map->height] = NULL;
 	map->map_cp2 = copy_array(newmap, map->height, map->width);
-	Free2DArray(newmap);
+	free_2d_array(newmap);
 }
 
 int	check_row3(t_map *map)
