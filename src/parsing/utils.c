@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:59:41 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:18:22 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:20:30 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,4 @@ char	*ft_strstr(const char *text, const char *pattern)
 		text++;
 	}
 	return (NULL);
-}
-
-void	free_all(t_game *game)
-{
-	free(game->img.east);
-	free(game->img.north);
-	free(game->img.south);
-	free(game->img.west);
 }

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:18:42 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/20 14:44:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:20:39 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 void	leak(void)
 {
 	system("leaks cub3d");
+}
+
+void	free_all(t_game *game)
+{
+	free(game->img.east);
+	free(game->img.north);
+	free(game->img.south);
+	free(game->img.west);
 }
 
 void	destroy_img(t_game *game)
