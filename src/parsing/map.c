@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:22:41 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:46:11 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,14 +129,14 @@ int	check_map(t_map *info)
 		{
 			if (check_row2(info->map[i]))
 			{
-				ft_error("ERROR: map isn't surrounded wall\n");
+				ft_error("Map isn't surrounded by wall\n");
 				return (1);
 			}
 		}
 	}
 	if (check_row3(info))
 	{
-		ft_error("ERROR: map isn't surrounded wall\n");
+		ft_error("Map isn't surrounded by wall\n");
 		return (1);
 	}
 	return (0);
@@ -161,8 +161,8 @@ int	parsing_map(t_map *info, char *full_path)
 			info->width = width;
 		i++;
 	}
-	if (check_spawn(info))
-		return (ft_error("NSWE is not in the map\n"));
+	if (check_spawn(info) != 1)
+		return (ft_error("Check the number of player\n"));
 	if (check_map(info))
 		return (ft_error("Map is not surrounded wall\n"));
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:09:47 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:14:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:39:14 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	check_spawn(t_map *map)
 			map->px = i;
 			while (map->map[i][++j])
 			{
-				if (map->map[i][j] == 'N' || map->map[i][j] == 'W'
-				|| map->map[i][j] == 'E' || map->map[i][j] == 'S')
+				if (ft_strchr("NEWS", map->map[i][j]))
 				{
 					map->py = j;
 					map->pos = map->map[i][j];
@@ -39,9 +38,7 @@ int	check_spawn(t_map *map)
 			}
 		}
 	}
-	if (character == 1)
-		return (0);
-	return (1);
+	return (character);
 }
 
 int	check_row(char *str)

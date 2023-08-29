@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:52:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:23:10 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:48:57 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	parsing_all(int fd, t_game *game_all, t_map *map_all)
 		|| parsing_map(map_all, map_all->full_path)
 		|| parsing_texture(map_all, &game_all->img))
 	{
-		printf("map format is wrong\n");
 		return (1);
 	}
 	return (0);
@@ -85,12 +84,14 @@ int	init_input(t_game *game_all, char *map_path)
 
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
-		return (ft_error("map isn't exist\n"));
-	printf("\nmap is open\n");
+		return (ft_error("Map isn't exist\n"));
+	printf("-------------------------------\n\t Map is opened\n");
+	printf("-------------------------------\n");
 	if (parsing_all(fd, game_all, &game_all->map))
-		return (ft_error("map parsing error\n"));
+		return (1);
 	close(fd);
-	printf("map is closed\n");
+	printf("-------------------------------\n\t Map is closed\n");
+	printf("-------------------------------\n");
 	return (0);
 }
 

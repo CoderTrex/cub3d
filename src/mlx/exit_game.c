@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:18:42 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:20:39 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:49:51 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	end_game(t_game *game)
 	destroy_img(game);
 	mlx_destroy_window(game->mlx, game->win);
 	free_all(game);
+	printf("--------------------------------\n     THANK YOU FOR PLAYING!\n");
+	printf("--------------------------------\n");
 	atexit(leak);
 	exit(0);
 }
