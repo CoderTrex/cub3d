@@ -35,8 +35,3 @@ map.c line 27: ft_strchr(check[i], '1') error<br />
 ## 08.20.
 
 Error 출력 시 Error\n 먼저 출력해야함
-
----
-
-텍스쳐 방향만 해결하면 됨
-raycast.c draw() line 67을 어떻게 찜쪄먹으면 제대로 출력할 수 있을 듯
