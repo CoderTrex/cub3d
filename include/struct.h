@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 16:17:13 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:45:17 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ typedef struct s_tex
 
 typedef struct s_xpm
 {
-	void	*north;
-	void	*south;
-	void	*west;
-	void	*east;
-
 	t_tex	tex[4];
 
 	void	*img;

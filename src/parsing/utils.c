@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:59:41 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:20:30 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:43:44 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ int	check_rgb(char **split, t_color *color_s)
 		if (number > 255 || number < 0)
 			return (ft_error("RGB values must be within 0 and 255"));
 		if (i == 0)
-			color_s->R = number;
+			color_s->r = number;
 		if (i == 1)
-			color_s->G = number;
+			color_s->g = number;
 		if (i == 2)
-			color_s->B = number;
+			color_s->b = number;
 		i++;
 	}
 	return (0);

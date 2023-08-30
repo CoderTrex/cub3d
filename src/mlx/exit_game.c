@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:18:42 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:49:51 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:45:12 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,11 @@ void	free_all(t_game *game)
 
 void	destroy_img(t_game *game)
 {
-	if (game->xpm.north)
-		mlx_destroy_image(game->mlx, game->xpm.north);
-	if (game->xpm.south)
-		mlx_destroy_image(game->mlx, game->xpm.south);
-	if (game->xpm.west)
-		mlx_destroy_image(game->mlx, game->xpm.west);
-	if (game->xpm.east)
-		mlx_destroy_image(game->mlx, game->xpm.east);
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+		mlx_destroy_image(game->mlx, game->xpm.tex[i].img);
 }
 
 int	end_game(t_game *game)

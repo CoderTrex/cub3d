@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:15:12 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 11:19:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:45:01 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,6 @@ int	init_data(t_game *game)
 	game->xpm.move_sp = 0.31;
 	game->xpm.rot_sp = 0.1;
 	game->map.map[game->map.px][game->map.py] = '0';
-	return (0);
-}
-
-int	init_img(t_xpm *xpm, t_game *game)
-{
-	int	img_w;
-	int	img_h;
-
-	xpm->north = mlx_xpm_file_to_image(game->mlx, game->img.north,
-			&img_w, &img_h);
-	xpm->south = mlx_xpm_file_to_image(game->mlx, game->img.south,
-			&img_w, &img_h);
-	xpm->west = mlx_xpm_file_to_image(game->mlx, game->img.west,
-			&img_w, &img_h);
-	xpm->east = mlx_xpm_file_to_image(game->mlx, game->img.east,
-			&img_w, &img_h);
-	if (!(xpm->north) || !(xpm->south) || !(xpm->west) || !(xpm->east))
-		return (ft_error("Fail to load texture\n"));
 	return (0);
 }
 
