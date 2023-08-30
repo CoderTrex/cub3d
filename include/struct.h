@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/30 11:45:17 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:32:24 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define SOUTH 1
 # define WEST 2
 # define EAST 3
+
+# define PURPLE "\033[0;35m"
+# define RESET "\033[0m"
 
 typedef struct s_tex
 {

@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:24:32 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 14:39:43 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:32:29 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	print_map_with_player(t_game *game)
 		while (++j < game->map.width)
 		{
 			if (i == (int)game->xpm.pos_x && j == (int)game->xpm.pos_y)
-				printf("P");
+				printf(PURPLE"P");
 			else
-				printf("%c", game->map.map[i][j]);
+				printf(RESET"%c", game->map.map[i][j]);
 		}
 		printf("\n");
 	}
