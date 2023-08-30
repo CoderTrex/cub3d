@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/30 12:32:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:54:47 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,6 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
-
-	int		buf[HEIGHT][WIDTH];
 
 	t_img	img;
 	t_map	map;
