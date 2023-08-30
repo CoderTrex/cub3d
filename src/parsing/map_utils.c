@@ -12,20 +12,20 @@
 
 #include "../../include/cub3d.h"
 
-int	find_map_setting2(char *check)
+int	find_map_setting3(char *check, int i)
 {
-	if (ft_strstr(check, "NO") || ft_strstr(check, "EA")
-		|| ft_strstr(check, "SO") || ft_strstr(check, "WE")
-		|| ft_strstr(check, "F ") || ft_strstr(check, "C "))
+	if (i == 6 && (ft_strchr(check, '1')
+			&& !ft_strchr(check, 'F') && !ft_strchr(check, 'C')))
 		return (1);
 	else
 		return (0);
 }
 
-int	find_map_setting3(char *check, int i)
+int	find_map_setting2(char *check)
 {
-	if (i == 6 && (ft_strchr(check, '1')
-			&& !ft_strchr(check, 'F') && !ft_strchr(check, 'C')))
+	if (ft_strstr(check, "NO") || ft_strstr(check, "EA")
+		|| ft_strstr(check, "SO") || ft_strstr(check, "WE")
+		|| ft_strstr(check, "F ") || ft_strstr(check, "C "))
 		return (1);
 	else
 		return (0);

@@ -108,12 +108,6 @@ int	check_row3(t_map *map)
 	remake_map(map);
 	i = -1;
 	height = map->height;
-	
-	while (++i < height)
-	{
-		printf("%s\n", map->map_cp2[i]);
-	}
-
 	i = -1;
 	while (++i < height)
 	{

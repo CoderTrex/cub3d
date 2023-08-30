@@ -52,7 +52,7 @@ void	remake_map(t_map *map)
 {
 	int		i;
 	int		j;
-	int 	ori_len;
+	int		ori_len;
 	char	**newmap;
 
 	i = -1;
@@ -60,7 +60,7 @@ void	remake_map(t_map *map)
 	while (++i < map->height)
 	{
 		newmap[i] = (char *)malloc(sizeof(char *) * map->width + 1);
-		j = -1;		
+		j = -1;
 		while (++j < map->width)
 		{
 			ori_len = ft_strlen(map->map[i]);
@@ -70,34 +70,10 @@ void	remake_map(t_map *map)
 			if (j >= ori_len)
 				newmap[i][j] = '3';
 		}
-		printf("\n");
 		newmap[i][j] = '\0';
 	}
 	newmap[map->height] = NULL;
-	
-	i = -1;
-	printf("new map\n");
-	while (++i < map->height)
-	{
-		printf("%s\n", newmap[i]);
-	}
-
-	printf("\n");
-	printf("\n");
-	printf("\n");
-
 	map->map_cp2 = copy_array(newmap, map->height, map->width);
-	
-	i = -1;
-	printf("map_cp2\n");
-	while (++i < map->height)
-	{
-		printf("%s\n", map->map_cp2[i]);
-	}
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	
 	free_2d_array(newmap);
 }
 
@@ -132,7 +108,7 @@ int	parsing_map(t_map *info, char *full_path)
 
 	start_index = find_map(full_path, info);
 	if (start_index == -1)
-		return (ft_error("Invalid map area"));
+		return (ft_error("There are not enough arguments for the map.\n"));
 	i = 0;
 	width = 0;
 	info->height = info->map_len;
@@ -144,7 +120,7 @@ int	parsing_map(t_map *info, char *full_path)
 		i++;
 	}
 	if (check_spawn(info) != 1)
-		return (ft_error("Check the number of player\n"));
+		return (ft_error("Wrong number of player\n"));
 	if (check_map(info))
 		return (1);
 	return (0);
