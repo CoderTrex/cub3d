@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/07/18 13:20:59 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:19:09 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,57 @@
 # include "struct.h"
 # include "../mlx/mlx.h"
 
-void	        ft_strcpy(char *dst, const char *src);
-int	            read_till_end(int fd, char **line);
-// static char	    *ft_join(char *s1, char *s2);
-int             parsing_all(int fd, t_game *game_all, t_map *map_all);
-int             init_input(t_game *game_all, char *map_path);
-int             ft_parsing_master(char **argv, t_game *game_all);
-int             ft_error(char *msg);
+void			ft_strcpy(char *dst, const char *src);
+int				read_till_end(int fd, char **line);
+int				parsing_all(int fd, t_game *game_all, t_map *map_all);
+int				init_input(t_game *game_all, char *map_path);
+int				ft_parsing_master(char **argv, t_game *game_all);
+int				ft_error(char *msg);
 
-int	            make_rgb(int r, int g, int b);
-int	            get_r(int rgb);
-int	            get_g(int rgb);
-int	            get_b(int rgb);
+int				make_rgb(int r, int g, int b);
+int				get_r(int rgb);
+int				get_g(int rgb);
+int				get_b(int rgb);
 
-char	        **Free2DArray(char **array);
-int	            ft_isdigitString(char *str);
-int	            check_rgb(char **split, t_color *color_s);
-int	            get_findex(char *str, char c);
-char	        *ft_strstr(const char *text, const char *pattern);
+char			**free_2d_array(char **array);
+int				ft_isdigit_string(char *str);
+int				check_rgb(char **split, t_color *color_s);
+int				get_findex(char *str, char c);
+char			*ft_strstr(const char *text, const char *pattern);
+char			*create_line(char *str, char *needle);
+char			*remove_spaces(char *input);
+void			free_all(t_game *game);
 
-int	            parsing_map(t_map *info, char *full_path);
-int	            find_map(char *full_file, t_map *info);
+int             find_map_setting2(char *check);
+int             find_map_setting3(char *check, int i);
+int             find_map_setting(t_map *info, char **check, int size);
+
+int				parsing_map(t_map *info, char *full_path);
+int				find_map(char *full_file, t_map *info);
+void			remake_map(t_map *map);
+int				check_spawn(t_map *map);
+int				check_row(char *str);
+int				check_row2(char *str);
+int				check_row3(t_map *map);
+
+int				init_game(t_game *game);
+void			set_dir(t_game *game);
+
+void			draw_texture(t_game *game, int i);
+void			cal_dda(t_game *game);
+void			get_hit_pos(t_game *game);
+void			put_pixel(t_game *game, int x, int y, unsigned int color);
+unsigned int	get_color(t_game *game, t_tex *tex, int tex_y);
+
+int				print_img(t_game *game);
+void			render_img(t_game *game);
+
+int				key_press(int key, t_game *game);
+int				key_release(int key, t_game *game);
+
+int				move(t_game *game);
+void			print_map_with_player(t_game *game);
+
+int				end_game(t_game *game);
 
 #endif
