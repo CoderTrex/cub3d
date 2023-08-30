@@ -31,12 +31,15 @@ int	find_map_setting3(char *check, int i)
 		return (0);
 }
 
+// i[0]는 복사할 맵의 y축 값 
+// i[1]은 맵의 유효성 검사를 위해 갯수를 세는 것 
+// i[2]는 info 맵의 y축 값
 int	find_map_setting(t_map *info, char **check, int size)
 {
 	int	i[3];
 
-	i[1] = 0;
 	i[0] = -1;
+	i[1] = 0;
 	while (check[++i[0]])
 	{
 		if (find_map_setting2(check[i[0]]))

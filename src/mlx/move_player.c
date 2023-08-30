@@ -16,16 +16,18 @@ void	print_map_with_player(t_game *game)
 {
 	int	i;
 	int	j;
+	int len;
 
 	i = -1;
 	while (++i < game->map.height)
 	{
 		j = -1;
-		while (++j < game->map.width)
+		len = ft_strlen(game->map.map[i]);
+		while (++j < len)
 		{
 			if (i == (int)game->xpm.pos_x && j == (int)game->xpm.pos_y)
 				printf(PURPLE"P");
-			else
+			else if (game->map.map[i])
 				printf(RESET"%c", game->map.map[i][j]);
 		}
 		printf("\n");
