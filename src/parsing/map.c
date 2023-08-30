@@ -52,7 +52,7 @@ void	remake_map(t_map *map)
 {
 	int		i;
 	int		j;
-	int		width_ori_len;
+	int 	ori_len;
 	char	**newmap;
 
 	i = -1;
@@ -60,19 +60,44 @@ void	remake_map(t_map *map)
 	while (++i < map->height)
 	{
 		newmap[i] = (char *)malloc(sizeof(char *) * map->width + 1);
-		j = -1;
-		width_ori_len = ft_strlen(map->map[i]);
+		j = -1;		
 		while (++j < map->width)
 		{
+			ori_len = ft_strlen(map->map[i]);
+			newmap[i][j] = '3';
 			if (ft_strchr("01NEWS", map->map[i][j]))
-					newmap[i][j] = map->map[i][j];
-			else
+				newmap[i][j] = map->map[i][j];
+			if (j >= ori_len)
 				newmap[i][j] = '3';
 		}
+		printf("\n");
 		newmap[i][j] = '\0';
 	}
 	newmap[map->height] = NULL;
+	
+	i = -1;
+	printf("new map\n");
+	while (++i < map->height)
+	{
+		printf("%s\n", newmap[i]);
+	}
+
+	printf("\n");
+	printf("\n");
+	printf("\n");
+
 	map->map_cp2 = copy_array(newmap, map->height, map->width);
+	
+	i = -1;
+	printf("map_cp2\n");
+	while (++i < map->height)
+	{
+		printf("%s\n", map->map_cp2[i]);
+	}
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	
 	free_2d_array(newmap);
 }
 

@@ -12,15 +12,17 @@
 
 #include "../include/cub3d.h"
 
-int	ft_error(char *msg)
-{
-	printf("\nError\n%s\n", msg);
-	return (1);
-}
-
 void	leak_check(void)
 {
 	system("leaks cub3d");
+}
+
+int	ft_error(char *msg)
+{
+	printf("\nError\n%s\n", msg);
+	atexit(leak_check);
+	exit(EXIT_FAILURE);
+	return (1);
 }
 
 int	check_map_format(char *argv)
@@ -45,7 +47,7 @@ int	main(int argc, char **argv)
 	if (check_map_format(argv[1]))
 		return (ft_error("Map format is wrong\n"));
 	if (ft_parsing_master(argv, &game_all))
-		return (1);
+		return (ft_error("Map does not have the correct map configuration.\n"));
 	if (init_game(&game_all))
 		end_game(&game_all);
 	atexit(leak_check);

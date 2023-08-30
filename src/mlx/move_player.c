@@ -16,7 +16,7 @@ void	print_map_with_player(t_game *game)
 {
 	int	i;
 	int	j;
-	int len;
+	int	len;
 
 	i = -1;
 	while (++i < game->map.height)

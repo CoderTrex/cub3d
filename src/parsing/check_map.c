@@ -81,18 +81,11 @@ int	check_row2(char *str)
 int	check_four_forward(t_map *info, int y, int x)
 {
 	if (y < 0 || x < 0 || y == info->height || x == info->width)
-	{
-		printf("test: ERROR four forward %c\n", info->map_cp2[y][x]);
 		return (1);
-	}
 	if (info->map_cp2[y + 1][x] == '3' || info->map_cp2[y][x + 1] == '3'
 		|| info->map_cp2[y - 1][x] == '3' || info->map_cp2[y][x - 1] == '3'
 		|| info->map_cp2[y][x] == '3')
-	{
-		printf("test: ERROR four forward %c, and position: %d, %d\n",
-			info->map_cp2[y][x], x, y);
 		return (1);
-	}
 	info->map_cp2[y][x] = '1';
 	if (info->map_cp2[y - 1][x] == '0')
 		return (check_four_forward(info, y - 1, x));
@@ -115,6 +108,13 @@ int	check_row3(t_map *map)
 	remake_map(map);
 	i = -1;
 	height = map->height;
+	
+	while (++i < height)
+	{
+		printf("%s\n", map->map_cp2[i]);
+	}
+
+	i = -1;
 	while (++i < height)
 	{
 		j = -1;
@@ -122,7 +122,8 @@ int	check_row3(t_map *map)
 		while (++j < width)
 		{
 			if (map->map[i][j] == '0')
-				check_four_forward(map, i, j);
+				if (check_four_forward(map, i, j))
+					ft_error("Map is not blocked\n");
 		}
 	}
 	return (0);
