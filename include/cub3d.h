@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 15:19:09 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:12:52 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ char			*create_line(char *str, char *needle);
 char			*remove_spaces(char *input);
 void			free_all(t_game *game);
 
-int             find_map_setting2(char *check);
-int             find_map_setting3(char *check, int i);
-int             find_map_setting(t_map *info, char **check, int size);
+int				find_map_setting2(char *check);
+int				find_map_setting3(char *check, int i);
+int				find_map_setting(t_map *info, char **check, int size);
 
 int				parsing_map(t_map *info, char *full_path);
 int				find_map(char *full_file, t_map *info);
