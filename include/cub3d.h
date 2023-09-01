@@ -48,7 +48,7 @@ char			*create_line(char *str, char *needle);
 char			*remove_spaces(char *input);
 void			free_all(t_game *game);
 
-int				find_map_setting2(char *check);
+int				find_map_setting2(char *check, int i);
 int				find_map_setting3(char *check, int i);
 int				find_map_setting(t_map *info, char **check, int size);
 

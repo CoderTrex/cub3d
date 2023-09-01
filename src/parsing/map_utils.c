@@ -21,19 +21,30 @@ int	find_map_setting3(char *check, int i)
 		return (0);
 }
 
-int	find_map_setting2(char *check)
+int	find_map_setting2(char *check, int i)
 {
-	if (ft_strstr(check, "NO") || ft_strstr(check, "EA")
-		|| ft_strstr(check, "SO") || ft_strstr(check, "WE")
-		|| ft_strstr(check, "F ") || ft_strstr(check, "C "))
-		return (1);
-	else
-		return (0);
+	if (i < 6)
+	{
+		if (ft_strstr(check, "NO") || ft_strstr(check, "EA")
+			|| ft_strstr(check, "SO") || ft_strstr(check, "WE")
+			|| ft_strstr(check, "F ") || ft_strstr(check, "C "))
+			return (1);
+		else
+		{
+			if (check)
+				ft_error("Wrong Value is exist\n");
+			return (0);
+		}
+	}
+	return (0);
 }
 
 // i[0]는 복사할 맵의 y축 값 
 // i[1]은 맵의 유효성 검사를 위해 갯수를 세는 것 
 // i[2]는 info 맵의 y축 값
+
+// 줄이 있지만 해당 값이 텍스쳐 값도 아니고, 천장 바닥 값도 아닌 경우에 대해서 에러 처리
+// 값이 있는데 해당 값이 아니다. -> 에러
 int	find_map_setting(t_map *info, char **check, int size)
 {
 	int	i[3];
@@ -42,7 +53,7 @@ int	find_map_setting(t_map *info, char **check, int size)
 	i[1] = 0;
 	while (check[++i[0]])
 	{
-		if (find_map_setting2(check[i[0]]))
+		if (find_map_setting2(check[i[0]], i[1]))
 			i[1]++;
 		if (find_map_setting3(check[i[0]], i[1]))
 		{
