@@ -47,7 +47,7 @@ static char	*ft_join(char *s1, char *s2)
 	return (joined);
 }
 
-int	read_till_end(int fd, char **line)
+int	check_buff_end(int fd, char **line)
 {
 	int			ret;
 	static char	buf[BUFFER_SIZE + 1];

@@ -28,7 +28,7 @@
 # include "../mlx/mlx.h"
 
 void			ft_strcpy(char *dst, const char *src);
-int				read_till_end(int fd, char **line);
+int				check_buff_end(int fd, char **line);
 int				parsing_all(int fd, t_game *game_all, t_map *map_all);
 int				init_input(t_game *game_all, char *map_path);
 int				ft_parsing_master(char **argv, t_game *game_all);
