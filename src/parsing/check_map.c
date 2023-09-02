@@ -118,6 +118,9 @@ int	check_row3(t_map *map)
 			if (map->map[i][j] == '0')
 				if (check_four_forward(map, i, j))
 					ft_error("Map is not blocked\n");
+			if (i == (int)map->px && j == (int)map->py)
+				if (check_four_forward(map, i, j))
+					ft_error("Map is not blocked\n");
 		}
 	}
 	return (0);
