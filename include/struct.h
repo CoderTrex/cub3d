@@ -114,8 +114,10 @@ typedef struct s_map
 	char			**map;
 
 	char			**map_cp;
-
 	char			**map_cp2;
+	char			**map_cp3;
+	char			**map_cp4;
+
 	int				map_len;
 	int				width;
 	int				height;

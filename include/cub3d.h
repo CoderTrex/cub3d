@@ -59,7 +59,7 @@ int				check_spawn(t_map *map);
 int				check_row(char *str);
 int				check_row2(char *str);
 int				check_row3(t_map *map);
-
+char	        **copy_array(char **src, int rows, int cols);
 int				init_game(t_game *game);
 void			set_dir(t_game *game);
 

@@ -93,7 +93,6 @@ int	check_buff_end(int fd, char **line, char **line_space)
 {
 	int			ret;
 	static char	buf[BUFFER_SIZE + 1];
-	static char	buf_space[BUFFER_SIZE + 1];
 
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
@@ -102,7 +101,7 @@ int	check_buff_end(int fd, char **line, char **line_space)
 	while (ret > 0)
 	{
 		*line = ft_join(*line, buf);
-		*line_space = ft_join_space(*line_space, buf_space);
+		*line_space = ft_join_space(*line_space, buf);
 		ret = read(fd, buf, BUFFER_SIZE);
 		if (ret == -1)
 			return (-1);
