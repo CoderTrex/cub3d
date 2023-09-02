@@ -6,7 +6,7 @@
 #    By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 17:47:48 by minjinki          #+#    #+#              #
-#    Updated: 2023/03/11 15:41:43 by minjinki         ###   ########.fr        #
+#    Updated: 2023/09/02 12:40:28 by minjinki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS		=\
 			ft_isascii.c\
 			ft_isdigit.c\
 			ft_isprint.c\
+			ft_is_all_space.c\
 			ft_is_space.c\
 			ft_itoa.c\
 			ft_memchr.c\

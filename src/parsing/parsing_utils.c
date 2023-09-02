@@ -1,4 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/29 14:52:39 by minjinki          #+#    #+#             */
+/*   Updated: 2023/09/02 12:45:40 by minjinki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/cub3d.h"
+
+void	ft_strcpy_with_space(char *dst, const char *src)
+{
+	int	i;
+	int	j;
+
+	if (!src)
+		return ;
+	i = 0;
+	j = 0;
+	while (src[i])
+	{
+		if (src[i] == '\n')
+			dst[j++] = ' ';
+		dst[j] = src[i];
+		i++;
+		j++;
+	}
+	dst[j] = '\0';
+}
 
 void	ft_strcpy(char *dst, const char *src)
 {
@@ -13,6 +45,28 @@ void	ft_strcpy(char *dst, const char *src)
 		i++;
 	}
 	dst[i] = '\0';
+}
+
+static char	*ft_join_space(char *s1, char *s2)
+{
+	int		line_len;
+	char	*joined;
+
+	if (!s2)
+		return (s1);
+	if (s1)
+		line_len = ft_strlen(s1);
+	else
+		line_len = 0;
+	joined = ft_calloc(ft_strlen(s2) + line_len + 2, sizeof(char));
+	if (ft_strchr(s2, '\n'))
+		joined = ft_calloc(ft_strlen(s2) + line_len + 2, sizeof(char));
+	if (!joined)
+		return (NULL);
+	ft_strcpy(joined, s1);
+	ft_strcpy_with_space(joined + line_len, s2);
+	free(s1);
+	return (joined);
 }
 
 static char	*ft_join(char *s1, char *s2)
@@ -35,10 +89,11 @@ static char	*ft_join(char *s1, char *s2)
 	return (joined);
 }
 
-int	read_till_end(int fd, char **line)
+int	check_buff_end(int fd, char **line, char **line_space)
 {
 	int			ret;
 	static char	buf[BUFFER_SIZE + 1];
+	static char	buf_space[BUFFER_SIZE + 1];
 
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
@@ -47,10 +102,60 @@ int	read_till_end(int fd, char **line)
 	while (ret > 0)
 	{
 		*line = ft_join(*line, buf);
+		*line_space = ft_join_space(*line_space, buf_space);
 		ret = read(fd, buf, BUFFER_SIZE);
 		if (ret == -1)
 			return (-1);
 		buf[ret] = '\0';
 	}
 	return (0);
+}
+
+char	*create_line(char *str, char *needle)
+{
+	char	*line;
+	char	*trimmedline;
+	int		index;
+
+	line = ft_strstr(str, needle);
+	if (line)
+	{
+		line += ft_strlen(needle);
+		while (*line == ' ')
+			line++;
+		index = get_findex(line, '\n');
+		line = ft_substr(line, 0, index);
+		trimmedline = ft_strtrim(line, " ");
+		free(line);
+		return (trimmedline);
+	}
+	return (NULL);
+}
+
+char	*remove_spaces(char *input)
+{
+	int		i;
+	int		j;
+	char	*output;
+
+	i = -1;
+	j = 0;
+	while (input[++i])
+	{
+		if (input[i] != ' ' && input[i] > 0)
+			j++;
+	}
+	output = malloc(sizeof(char *) * j);
+	i = -1;
+	j = 0;
+	while (input[++i])
+	{
+		if (input[i] != ' ' && input[i] > 0)
+		{
+			output[j] = input[i];
+			j++;
+		}
+	}
+	output[j] = '\0';
+	return (output);
 }
