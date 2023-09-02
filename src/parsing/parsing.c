@@ -131,23 +131,29 @@ void	remake_map2(t_map *map, int height)
 	free_2d_array(newmap);
 }
 
-int	check_four_forward2(t_map *info, int y, int x)
+int	check_four_forward2(t_map *info, int y, int x, int h)
 {
-	if (y < 0 || x < 0 || y == info->height || x == info->width)
+	if (y < 0 || x < 0 || y == h || x == info->width)
+	{
+		printf("hellos\n");
 		return (1);
+	}
 	if (info->map_cp4[y + 1][x] == '3' || info->map_cp4[y][x + 1] == '3'
 		|| info->map_cp4[y - 1][x] == '3' || info->map_cp4[y][x - 1] == '3'
 		|| info->map_cp4[y][x] == '3')
+	{
+		printf("hello1\n");
 		return (1);
+	}
 	info->map_cp4[y][x] = '1';
 	if (info->map_cp4[y - 1][x] == '0')
-		return (check_four_forward2(info, y - 1, x));
+		return (check_four_forward2(info, y - 1, x, h));
 	if (info->map_cp4[y + 1][x] == '0')
-		return (check_four_forward2(info, y + 1, x));
+		return (check_four_forward2(info, y + 1, x, h));
 	if (info->map_cp4[y][x + 1] == '0')
-		return (check_four_forward2(info, y, x + 1));
+		return (check_four_forward2(info, y, x + 1, h));
 	if (info->map_cp4[y][x - 1] == '0')
-		return (check_four_forward2(info, y, x - 1));
+		return (check_four_forward2(info, y, x - 1, h));
 	return (0);
 }
 
@@ -159,24 +165,23 @@ int ft_strange_map_check(t_map *info, char *map)
 	int i = -1;
 	int j;
 
-
 	map2d = ft_split(map, '\n');
 	height = find_map_setting4(info, map2d);
 	remake_map2(info, height);
-
-	i = -1;
-	// while (info->map_cp4[++i])
-	// 	printf("%s\n", info->map_cp4[i]);
+	
 	while (++i < height)
 	{
-		printf("%s", info->map_cp4[i]);
+		printf("%s\n", info->map_cp4[i]);
 		j = -1;
 		width = ft_strlen(info->map_cp4[i]);
 		while (++j < width)
 		{
 			if (info->map_cp4[i][j] == '0')
-				if (check_four_forward2(info, i, j))
+				if (check_four_forward2(info, i, j, height))
+				{
+					printf("%d, %d", i, j);
 					ft_error("Map is not blocked\n");
+				}
 		}
 	}
 	free_2d_array(info->map_cp3);

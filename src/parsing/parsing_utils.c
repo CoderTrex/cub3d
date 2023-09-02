@@ -58,8 +58,9 @@ static char	*ft_join_space(char *s1, char *s2)
 		line_len = ft_strlen(s1);
 	else
 		line_len = 0;
-	joined = ft_calloc(ft_strlen(s2) + line_len + 2, sizeof(char));
 	if (ft_strchr(s2, '\n'))
+		joined = ft_calloc(ft_strlen(s2) + line_len + 2, sizeof(char));
+	else
 		joined = ft_calloc(ft_strlen(s2) + line_len + 2, sizeof(char));
 	if (!joined)
 		return (NULL);
