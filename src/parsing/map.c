@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 16:13:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:41:25 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	find_map(char *full_file, t_map *info)
 	int		size;
 
 	check = ft_split(full_file, '\n');
+	// for (int i = 0; check[i] != NULL; i++)
+	// 	printf("%s\n", check[i]);
 	size = -1;
 	while (check[++size])
 		;

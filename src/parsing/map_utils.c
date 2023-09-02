@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:40:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 16:13:24 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:40:53 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	find_map_setting2(char *check, int i)
 			|| ft_strstr(check, "SO") || ft_strstr(check, "WE")
 			|| ft_strstr(check, "F ") || ft_strstr(check, "C "))
 			return (1);
+		else if (ft_is_all_space(check))
+			return (2);
 		else
 		{
 			if (check)
@@ -52,7 +54,7 @@ int	find_map_setting(t_map *info, char **check, int size)
 	i[1] = 0;
 	while (check[++i[0]])
 	{
-		if (find_map_setting2(check[i[0]], i[1]))
+		if (find_map_setting2(check[i[0]], i[1]) == 1)
 			i[1]++;
 		if (find_map_setting3(check[i[0]], i[1]))
 		{

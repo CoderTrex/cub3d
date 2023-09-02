@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:52:59 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/29 16:16:29 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:44:26 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	parsing_all(int fd, t_game *game_all, t_map *map_all)
 {
 	int	ret;
 
-	ret = check_buff_end(fd, &(map_all->full_path));
+	ret = check_buff_end(fd, &(map_all->full_path), &(map_all->full_path_space));
 	if (ret == -1)
 		return (ft_error(""));
 	if (parsing_color(map_all->full_path, &map_all->floor_color, "F ")

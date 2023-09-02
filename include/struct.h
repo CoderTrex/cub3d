@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:20:39 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/31 15:12:28 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:44:03 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_img
 typedef struct s_map
 {
 	char			*full_path;
+	char			*full_path_space;
 	char			**map;
 
 	char			**map_cp;

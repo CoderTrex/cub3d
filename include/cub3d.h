@@ -6,7 +6,7 @@
 /*   By: minjinki <minjinki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:24:17 by minjinki          #+#    #+#             */
-/*   Updated: 2023/08/31 15:12:52 by minjinki         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:46:56 by minjinki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "../mlx/mlx.h"
 
 void			ft_strcpy(char *dst, const char *src);
-int				check_buff_end(int fd, char **line);
+int				check_buff_end(int fd, char **line, char **line_space);
 int				parsing_all(int fd, t_game *game_all, t_map *map_all);
 int				init_input(t_game *game_all, char *map_path);
 int				ft_parsing_master(char **argv, t_game *game_all);
