@@ -64,7 +64,7 @@ int	parsing_all(int fd, t_game *game_all, t_map *map_all)
 {
 	int	ret;
 
-	ret = read_till_end(fd, &(map_all->full_path));
+	ret = check_buff_end(fd, &(map_all->full_path));
 	if (ret == -1)
 		return (ft_error(""));
 	if (parsing_color(map_all->full_path, &map_all->floor_color, "F ")

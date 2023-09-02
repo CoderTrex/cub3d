@@ -28,7 +28,7 @@
 # include "../mlx/mlx.h"
 
 void			ft_strcpy(char *dst, const char *src);
-int				read_till_end(int fd, char **line);
+int				check_buff_end(int fd, char **line);
 int				parsing_all(int fd, t_game *game_all, t_map *map_all);
 int				init_input(t_game *game_all, char *map_path);
 int				ft_parsing_master(char **argv, t_game *game_all);
@@ -48,7 +48,7 @@ char			*create_line(char *str, char *needle);
 char			*remove_spaces(char *input);
 void			free_all(t_game *game);
 
-int				find_map_setting2(char *check);
+int				find_map_setting2(char *check, int i);
 int				find_map_setting3(char *check, int i);
 int				find_map_setting(t_map *info, char **check, int size);
 
