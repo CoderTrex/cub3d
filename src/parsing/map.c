@@ -19,8 +19,6 @@ int	find_map(char *full_file, t_map *info)
 	int		size;
 
 	check = ft_split(full_file, '\n');
-	// for (int i = 0; check[i] != NULL; i++)
-	// 	printf("%s\n", check[i]);
 	size = -1;
 	while (check[++size])
 		;

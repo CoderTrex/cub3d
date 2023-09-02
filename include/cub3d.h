@@ -59,7 +59,7 @@ int				check_spawn(t_map *map);
 int				check_row(char *str);
 int				check_row2(char *str);
 int				check_row3(t_map *map);
-char	        **copy_array(char **src, int rows, int cols);
+char			**copy_array(char **src, int rows, int cols);
 int				init_game(t_game *game);
 void			set_dir(t_game *game);
 
@@ -79,5 +79,11 @@ int				move(t_game *game);
 void			print_map_with_player(t_game *game);
 
 int				end_game(t_game *game);
+
+void			ft_strcpy_with_space(char *dst, const char *src);
+int				find_map_setting4(t_map *info, char **check);
+void			remake_map2(t_map *map, int height);
+int				check_four_forward2(t_map *info, int y, int x, int h);
+int				ft_strange_map_check(t_map *info, char *map);
 
 #endif

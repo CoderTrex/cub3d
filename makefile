@@ -5,7 +5,9 @@ SRCS =  src/main.c\
 		src/parsing/parsing_utils.c\
 		src/parsing/color.c\
 		src/parsing/utils.c\
+		src/parsing/utils2.c\
 		src/parsing/map_utils.c\
+		src/parsing/map_utils2.c\
 		src/parsing/map.c\
 		src/parsing/check_map.c\
 		src/mlx/init_game.c\

@@ -121,6 +121,7 @@ typedef struct s_map
 	int				map_len;
 	int				width;
 	int				height;
+	int				start;
 
 	unsigned int	floor_color;
 	unsigned int	cell_color;
