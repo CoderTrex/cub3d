@@ -133,3 +133,15 @@ cub3d/
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
+
+
+
+## Project Crawling
+
+PROJECT_NAME : cub3d
+PROJECT_DESCRIPTION : Cub3d is a project at 42 school designed to introduce students to the basics of raycasting. The goal is to create a simple 3D game engine using 2D raycasting to render a maze-like world from a first-person perspective. This project aims to enhance your understanding of graphics programming and game development fundamentals.
+PROJECT_URL : 'https://github.com/Tyranno-Rex/cub3d.git'
+PROJECT_COMPLETION_STATUS : TRUE
+PROJECT_MULTI : FALSE
+PROJECT_SUBPROJECT : NONE
+PROJECT_CATEGORY : 'graphic', 'game&simulation', 'algorithm', 'teamTask'
